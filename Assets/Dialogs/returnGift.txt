@@ -1,0 +1,13 @@
+Hey, again mate!
+What? Do you want to return the gift?? ->Q:
+Yes! -ANS:8
+NO! -ANS:12
+hmmm...
+-END
+
+-Ok then...
+-CALL:RemoveGift
+-END
+
+-Oh, fine!
+-END

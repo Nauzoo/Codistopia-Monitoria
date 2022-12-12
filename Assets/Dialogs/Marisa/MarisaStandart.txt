@@ -1,0 +1,4 @@
+->VOICE:FEMALE
+Ola de novo, fique a vontade!
+Podemos conversar mais quando eu terminar de arrumar a casa.
+-END

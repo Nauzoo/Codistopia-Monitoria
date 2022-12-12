@@ -1,0 +1,46 @@
+// this is how we do it
+
+// LET'S CODE!
+
+var myStory = "amazing"
+
+
+var love = 1000000
+
+for time in interval(love){
+	write("Powered by Nazuli!")
+}
+
+bring vicky.actions
+
+move("f", 5)
+
+move("r", 5)
+
+move("b", 5)
+
+move("l", 5)
+
+func ILoveYou(variable){
+	if variable == "you"{
+		while True {
+			write(variable)
+		}
+	}
+
+	else{
+		return "that's not true..."
+	}
+
+}
+
+// C++
+
+#include <iostream>
+
+
+int main()
+{
+    std::cout << "Hello World!\n";
+
+}

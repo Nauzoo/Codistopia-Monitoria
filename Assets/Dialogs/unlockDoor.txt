@@ -1,0 +1,12 @@
+Sistema de seguranca. Bip!
+Insira a senha: ->Q:
+1234 -ANS:8
+Senha?? -ANS:12
+-goto->1
+
+Senha correta.
+Destrancando a porta... -J
+wait:1
+-CALL:unlockW
+Porta destrancada!
+-END

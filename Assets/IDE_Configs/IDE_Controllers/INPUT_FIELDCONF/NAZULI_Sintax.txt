@@ -1,0 +1,181 @@
+function:
+
+func name (parameter) {
+	
+	return: var
+}
+
+console writing:
+
+write:"string"
+write: variable
+
+variable declaring:
+
+var name = something
+array name = [something]
+
+loops:
+
+for loops:
+
+for: cicle int {
+
+}
+
+foreach: var, array {
+
+}
+
+while loop:
+
+while: bool {
+
+}
+
+if statements:
+
+if: bool {
+
+}
+
+elif: bool {
+
+}
+
+else {
+
+}
+
+math operators:
+
+plus: +
+minus: -
+multiplication: *
+division: /
+integer division: //
+power: ^
+square root: sqrt()
+
+=======//=========//========
+      ABSTRACT SYNTAX
+=======//=========//========
+
+factor     : INT or FLOAT
+term       : factor((MUL or DIV) factor)*
+expression : term((PLUS or MINUS) term)*
+
+public class PARSER
+    {
+        List<TOKEN> myTokens = new List<TOKEN>();
+        int tkIndex;
+        bool canRun = true;
+        private TOKEN current_token;
+        public PARSER(List<TOKEN> tokens)
+        {
+            myTokens = tokens;
+            tkIndex = -1;
+            Advance();
+        }
+        public void Advance()
+        {
+            tkIndex++;
+            if (tkIndex < myTokens.Count)
+            {
+                current_token = myTokens[tkIndex];
+            }
+        }
+        public string Parse(string Abort = null)
+        {
+            string result;
+            if (Abort == null)
+            {
+                result = expression();                
+            }
+            else
+            {
+                result = "";
+            }
+            return result;
+        }
+        public string factor()
+        {
+            if (current_token.identifier == "INT"|| current_token.identifier == "FLOAT")
+            {
+                TOKEN grab = current_token;
+                Advance();
+                return grab.readToken();
+            }
+            else
+            {
+                ERRORS.InvalidSyntax(current_token.tokenValue, "expected Int or Float number", current_token.myLine, current_token.myWord);
+                canRun = false;
+                return "break";
+            }
+        }
+        public string term()
+        {
+            string left = factor();            
+            BinaryOpNode binaryOp;
+            
+            while (current_token.identifier == "MUL_SIG"|| current_token.identifier == "DIV_SIG")
+            {
+                TOKEN op_token = current_token;
+                Advance();
+                string right = factor();
+                binaryOp = new BinaryOpNode(left, op_token.identifier, right);
+                left = binaryOp.DoOperation();
+            }
+            return left;
+        }
+        public string expression()
+        {
+            string left = term();            
+            BinaryOpNode binaryOp;
+            
+            while (current_token.identifier == "PLUS_SIG" || current_token.identifier == "MIN_SIG")
+            {
+                TOKEN op_token = current_token;
+                Advance();
+                string right = term();
+                binaryOp = new BinaryOpNode(left, op_token.identifier, right);
+                left = binaryOp.DoOperation();
+            }
+            return left;
+        }        
+    }
+
+    if (new_lFactor.Split(" ")[0] == "FLOAT")
+            {                
+                float n = float.Parse(new_lFactor.Split(" ")[1]);
+                if (new_rFactor.Split(" ")[0] == "FLOAT")
+                {
+                    float m = float.Parse(new_rFactor.Split(" ")[1]);
+
+                    float res = n * m;
+                    result = $"FLOAT:{res.ToString()}";                    
+                }
+                else if (new_rFactor.Split(" ")[0] == "INT")
+                {
+                    int o = int.Parse(new_rFactor.Split(" ")[1]);
+                    float res = n * o;
+                    result = $"FLOAT:{res.ToString()}";                    
+                }
+            }
+            else
+            {
+                int n = int.Parse(new_lFactor.Split(" ")[1]);
+                if (new_rFactor.Split(" ")[0] == "FLOAT")
+                {
+                    float m = float.Parse(new_rFactor.Split(" ")[1]);
+
+                    float res = n * m;
+                    result = $"FLOAT:{res.ToString()}";
+                }
+                else if (new_rFactor.Split(" ")[0] == "INT")
+                {
+                    int o = int.Parse(new_rFactor.Split(" ")[1]);
+                    float res = n * o;
+                    result = $"INT:{res.ToString()}";
+                }
+            }            

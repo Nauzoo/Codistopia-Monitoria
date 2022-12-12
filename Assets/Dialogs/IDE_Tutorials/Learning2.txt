@@ -1,0 +1,4 @@
+Hi, this is tutorial number 2!
+How are you?
+-CALL:IdeCloseTut
+-END

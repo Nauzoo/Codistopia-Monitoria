@@ -1,0 +1,15 @@
+Olha, E um totem de salvamento!
+Voce deseja salvar o jogo? ->Q:
+Sim! -ANS:8
+Nao! -ANS:14
+Respode menor!
+-goto ->2
+
+Salvando... Nao desligue o aparelho! -J
+-wait:1
+-CALL:SaveGame
+Jogo salvo!
+-END
+
+Talves depois?
+-END

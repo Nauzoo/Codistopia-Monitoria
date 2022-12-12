@@ -1,0 +1,21 @@
+->VOICE:FEMALE
+Hello, my name is Flandre Scarlet. Nice to meet you!
+How are you today? ->Q:
+I'm fine! -ANS:9
+Not so fine... -ANS:11
+Hey don't ignore me!
+-goto ->2
+
+That's great!
+-goto ->12
+Oh no! That's bad...
+-goto ->12
+Do you wanna see something cool? ->Q:
+YES! -ANS:17
+NO! -ANS:20
+
+Take a look!
+-CALL:SquareCollor
+-END
+That's sad...
+-END

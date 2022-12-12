@@ -1,0 +1,12 @@
+->VOICE:MACHINE
+Olha, e um computador!
+Voce deseja utiliza-lo? ->Q:
+Sim! -ANS:7
+Nao... -ANS:11
+
+Ligando a maquina!
+-CALL:OpenPc
+-END
+
+Ok...
+-END

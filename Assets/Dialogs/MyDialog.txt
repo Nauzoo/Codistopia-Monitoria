@@ -1,0 +1,32 @@
+this is a test
+hey, reimu?
+now I'm speaking a very long and tedious scentence that will make you fall asleep as soon as you won't be abble to see zzzzzzzzzzzzzzzzzzzzzzzz
+Oh! it's just to test if my skip is working :)
+Does your mom know u are gay? ->Q:
+Yes -ANS:11
+No -ANS:27
+Hey, will you ignore me?
+-END
+
+Lol, I knew it 
+But anyway, how are you today? ->Q:
+Good! -ANS:17
+Bad... -ANS:21
+-END
+
+Really? Are you good?
+That's good to know!
+-goto ->31
+
+Really? Are you bad?
+Why mate?
+Well, take this... Maybe you will feel better!
+<color="yellow"> You've gotten a gift!
+-CALL:AddGift
+-END
+
+So why won't you tell? Lol! 
+-END
+
+Anyway, I guess is time to finish here.
+-END

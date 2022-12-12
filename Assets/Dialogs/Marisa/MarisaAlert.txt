@@ -1,0 +1,8 @@
+->VOICE:FEMALE
+...
+-CALL:bookCheck
+Ei! Nao toque nisso! eh...
+Bom, e uma historia muito ruim sabe... haha
+Voce nao vai querer ler, acredite.
+-CALL:releaseBook
+-END

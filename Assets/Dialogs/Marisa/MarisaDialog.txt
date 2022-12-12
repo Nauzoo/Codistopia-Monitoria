@@ -1,0 +1,45 @@
+->VOICE:FEMALE
+Uh... Ola, voce e um dos visinhos?
+Bom, eu acabei de chegar na cidade entao... nao conheco muito o local!
+Como voce se chama? ->Q:
+Ziul... -ANS:10
+Prefiro nao dizer... -ANS:10
+... Alo?
+-goto ->4
+
+Nao seja timido! Meu nome e Marisa Kirisame, uma cacadora profissional de Youkais! ->Q:
+Oque e um youkai? -ANS:14
+Que legal. -ANS:17
+-goto ->10
+Um youkai? 
+Eh... Eh... 
+Bom! Vamos mudar de Assunto.
+Como voce pode ver eu acabei de chegar por aqui, entao esta tudo meio baguncado.
+E isso por que eu trouxe apenas o essencial! ->Q:
+Onde conseguiu tantos livros? -ANS:22
+De onde voce e? -ANS:27
+-goto ->18
+Livros? uhh... bom, haha... sabe como e ne!?
+Os livros... Digamos que eu peguei emprestado. Com uma amiga.
+Emprestado, isso... Emprestado...
+-goto ->33
+
+Eu venho de Gensokyo, e uma terra distan...
+...
+Fica na Tailandia.
+Confia.
+-goto ->33
+
+Eu estou mudando para um novo local a fim de consguir novas oportunidades. Sabe como e ne?
+Ouvi que por aqui consigo aprender uma tecnica legal chamada "programacao"!
+O nome e interessante...
+Mas eu nao sei o que e. ->Q:
+Eu sei o que e. -ANS:41
+Estou aprendendo sobre o assunto. -ANS:41
+-goto ->35
+
+Serio, Poderia me ensinar um dia?
+Venha aqui novamente quando quiser, ficarei feliz em recebe-lo!
+Da proxima vez voce pode me ensinar um pouco dessa tal programacao.
+-CALL:MarisaT
+-END
