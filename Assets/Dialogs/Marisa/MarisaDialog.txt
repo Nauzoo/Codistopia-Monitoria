@@ -30,7 +30,7 @@ Fica na Tailandia.
 Confia.
 -goto ->33
 
-Eu estou mudando para um novo local a fim de consguir novas oportunidades. Sabe como e ne?
+Eu estou mudando para um novo local a fim de conseguir novas oportunidades. Sabe como e ne?
 Ouvi que por aqui consigo aprender uma tecnica legal chamada "programacao"!
 O nome e interessante...
 Mas eu nao sei o que e. ->Q:
