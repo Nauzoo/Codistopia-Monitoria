@@ -6,6 +6,16 @@ public class NPC_Movement : MonoBehaviour
 {
     public bool isStatic;
 
+    private const string IDLE_RIGHT_1 = "Idle_right";
+    private const string IDLE_LEFT_2 = "Idle_left";
+    private const string IDLE_BACK_3 = "Idle_back";
+    private const string IDLE_FRONT_4 = "Idle_front";
+
+    private const string WALK_RIGHT_1 = "Walking_right";
+    private const string WALK_LEFT_2 = "Walking_left";
+    private const string WALK_BACK_3 = "Walking_back";
+    private const string WALK_FRONT_4 = "Walking_front";
+
     [SerializeField] private Transform[] mPositions;
     [SerializeField] private int speed;
     [SerializeField] private float waitTime;
@@ -22,8 +32,8 @@ public class NPC_Movement : MonoBehaviour
 
     public Animator animator;
 
-    private int animState = 0;
-    private int lookDir = 0;
+    private int lookinDir = 4;
+
     void Start()
     {
         RandNewPos();
@@ -41,8 +51,22 @@ public class NPC_Movement : MonoBehaviour
 
             if (tarDis <= .2f)
             {
-                animState = 0;
-                animator.SetInteger("animIndex", lookDir + animState);
+                switch (lookinDir)
+                {
+                    case 1:
+                        animator.Play(IDLE_RIGHT_1);
+                        break;
+                    case 2:
+                        animator.Play(IDLE_LEFT_2);
+                        break;
+                    case 3:
+                        animator.Play(IDLE_BACK_3);
+                        break;
+                    case 4:
+                        animator.Play(IDLE_FRONT_4);
+                        break;
+                }
+
                 if (timeHolder <= 0)
                 {
                     RandNewPos();
@@ -55,7 +79,6 @@ public class NPC_Movement : MonoBehaviour
             }
             else
             {
-                animState = 4;
                 deltaXmove = transform.position.x - lastX;
                 deltaYmove = transform.position.y - lastY;
 
@@ -63,25 +86,28 @@ public class NPC_Movement : MonoBehaviour
                 {
                     if (lastX > transform.position.x)
                     {
-                        lookDir = 0;
+                        animator.Play(WALK_LEFT_2);
+                        lookinDir = 2;
                     }
                     else if (lastX < transform.position.x)
                     {
-                        lookDir = 1;
+                        animator.Play(WALK_RIGHT_1);
+                        lookinDir = 1;
                     }
                 }
                 else if (Mathf.Abs(deltaXmove) < Mathf.Abs(deltaYmove))
                 {
                     if (lastY > transform.position.y)
                     {
-                        lookDir = 2;
+                        animator.Play(WALK_FRONT_4);
+                        lookinDir = 4;
                     }
                     else if (lastY < transform.position.y)
-                    {
-                        lookDir = 3;
+                    {                        
+                        animator.Play(WALK_BACK_3);
+                        lookinDir = 3;
                     }
                 }
-                animator.SetInteger("animIndex", lookDir + animState);
 
                 lastX = transform.position.x;
                 lastY = transform.position.y;
@@ -98,25 +124,24 @@ public class NPC_Movement : MonoBehaviour
                 {
                     if (transform.position.x > Player_movement.GetInstance().transform.position.x)
                     {
-                        lookDir = 0;
+                        animator.Play(IDLE_LEFT_2);
                     }
                     else if (transform.position.x < Player_movement.GetInstance().transform.position.x)
                     {
-                        lookDir = 1;
+                        animator.Play(IDLE_RIGHT_1);
                     }
                 }
                 else if (Mathf.Abs(meXplayerDy) > Mathf.Abs(meXplayerDx))
                 {
                     if (transform.position.y > Player_movement.GetInstance().transform.position.y)
                     {
-                        lookDir = 2;
+                        animator.Play(IDLE_FRONT_4);
                     }
                     else if (transform.position.y < Player_movement.GetInstance().transform.position.y)
                     {
-                        lookDir = 3;
+                        animator.Play(IDLE_BACK_3);
                     }
-                }
-                animator.SetInteger("animIndex", lookDir + animState);
+                }                
             }
         }
         
@@ -146,9 +171,5 @@ public class NPC_Movement : MonoBehaviour
     {
         yield return new WaitForSeconds(delay);
         canMove = state;
-        if (!state)
-        {
-            animState = 0;
-        }
     }
 }

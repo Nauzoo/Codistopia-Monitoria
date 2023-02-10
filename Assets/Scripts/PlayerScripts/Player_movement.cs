@@ -4,12 +4,22 @@ using UnityEngine;
 
 public class Player_movement : MonoBehaviour
 {
+    private const string IDLE_RIGHT_1 = "Idle_right";
+    private const string IDLE_LEFT_2 = "Idle_left";
+    private const string IDLE_BACK_3 = "Idle_back";
+    private const string IDLE_FRONT_4 = "Idle_front";
+
+    private const string WALK_RIGHT_1 = "Walking_right";
+    private const string WALK_LEFT_2 = "Walking_left";
+    private const string WALK_BACK_3 = "Walking_back";
+    private const string WALK_FRONT_4 = "Walking_front";
+
     public int speed = 3; // player speed
     public FixedJoystick moveJoystick; // Joystick class
     private Vector2 myMoveVector; // vecor x and y for current movement direction
     private Animator animator;
-    private int walking_anim_i = 1;
-    private int stoped_anim_i = 0;
+    
+    private int lookinDir;
 
     private static Player_movement playerInsyance;
 
@@ -44,46 +54,53 @@ public class Player_movement : MonoBehaviour
             {
                 if (myMoveVector[0] > 0.3f)
                 {
-                    walking_anim_i = 3;
+                    animator.Play(WALK_RIGHT_1);
+                    lookinDir = 1;
                 }
                 else if (myMoveVector[0] < -0.3f)
                 {
-                    walking_anim_i = 4;
+                    animator.Play(WALK_LEFT_2);
+                    lookinDir = 2;
                 }
             }
             else if (Mathf.Abs(myMoveVector[1]) > Mathf.Abs(myMoveVector[0])) 
             {
                 if (myMoveVector[1] > 0.3f)
                 {
-                    walking_anim_i = 2;
+                    animator.Play(WALK_BACK_3);
+                    lookinDir = 3;
                 }
                 else if (myMoveVector[1] < -0.3f)
                 {
-                    walking_anim_i = 1;
+                    animator.Play(WALK_FRONT_4);
+                    lookinDir = 4;
                 }
             }            
                         
             transform.Translate(speed * myMoveVector * Time.deltaTime); // move player's trasnform acording to myMoveVector
 
-            stoped_anim_i = 0;
+        }
+        else
+        {
+            if (lookinDir == 1)
+            {
+                animator.Play(IDLE_RIGHT_1);
+            }
+            else if (lookinDir == 2)
+            {
+                animator.Play(IDLE_LEFT_2);
+            }
+            else if (lookinDir == 3)
+            {
+                animator.Play(IDLE_BACK_3);
+            }
+            else if (lookinDir == 4)
+            {
+                animator.Play(IDLE_FRONT_4);
+            }
 
         }
-        else
-        {
-            stoped_anim_i = walking_anim_i + 4;
-            
-        }
         
-        if (stoped_anim_i == 0)
-        {
-            animator.SetInteger("Anim_index", walking_anim_i);            
-            
-        }
-        else
-        {
-            animator.SetInteger("Anim_index", stoped_anim_i);
-            
-        }
 
     }       
 

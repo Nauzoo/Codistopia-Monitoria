@@ -6,7 +6,7 @@ AnimationClip:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Nic_walkLeft
+  m_Name: Idle_back
   serializedVersion: 7
   m_Legacy: 0
   m_Compressed: 0
@@ -20,15 +20,11 @@ AnimationClip:
   m_PPtrCurves:
   - curve:
     - time: 0
-      value: {fileID: 21300000, guid: 741e13ef8ec32f94ea1d5898d28e4d9e, type: 3}
-    - time: 0.16666667
-      value: {fileID: 21300000, guid: d9d8d7b11b1a19344b0a9479c874e157, type: 3}
-    - time: 0.35
-      value: {fileID: 21300000, guid: 6f7339dc8de6fde4095f47ffa256380b, type: 3}
-    - time: 0.51666665
-      value: {fileID: 21300000, guid: 7304cac5a53173640aa7c63aef413d70, type: 3}
-    - time: 0.68333334
-      value: {fileID: 21300000, guid: 0aa3d94f00a4249438ded5475403642e, type: 3}
+      value: {fileID: 21300000, guid: fd34f0ba5ab874e4a85cdbd18f3a115c, type: 3}
+    - time: 0.33333334
+      value: {fileID: 21300000, guid: 5209bd68ee8dc4641bb2ef5875890157, type: 3}
+    - time: 0.6666667
+      value: {fileID: 21300000, guid: fd34f0ba5ab874e4a85cdbd18f3a115c, type: 3}
     attribute: m_Sprite
     path: 
     classID: 212
@@ -49,17 +45,15 @@ AnimationClip:
       isPPtrCurve: 1
       isIntCurve: 0
     pptrCurveMapping:
-    - {fileID: 21300000, guid: 741e13ef8ec32f94ea1d5898d28e4d9e, type: 3}
-    - {fileID: 21300000, guid: d9d8d7b11b1a19344b0a9479c874e157, type: 3}
-    - {fileID: 21300000, guid: 6f7339dc8de6fde4095f47ffa256380b, type: 3}
-    - {fileID: 21300000, guid: 7304cac5a53173640aa7c63aef413d70, type: 3}
-    - {fileID: 21300000, guid: 0aa3d94f00a4249438ded5475403642e, type: 3}
+    - {fileID: 21300000, guid: fd34f0ba5ab874e4a85cdbd18f3a115c, type: 3}
+    - {fileID: 21300000, guid: 5209bd68ee8dc4641bb2ef5875890157, type: 3}
+    - {fileID: 21300000, guid: fd34f0ba5ab874e4a85cdbd18f3a115c, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 0.7
+    m_StopTime: 0.68333334
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
