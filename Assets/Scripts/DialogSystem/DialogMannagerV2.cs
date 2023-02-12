@@ -36,11 +36,10 @@ public class DialogMannagerV2 : MonoBehaviour
     private static DialogMannagerV2 instance;
 
     [Header("Scene Events Mannager")]
-    [SerializeField] private SceneEventsM eventsTrigger;
+    [SerializeField] private EventMannager eventsTrigger;
 
-    [Header("AudioClips")]
-    [SerializeField] private AudioClip[] clip;
-    private int AudioIndex = 0;
+    // VOICE LINES AUDIO
+    private AudioClip voiceLine;
 
     private void Awake()
     {
@@ -65,6 +64,8 @@ public class DialogMannagerV2 : MonoBehaviour
 
         choicesTxt = new TextMeshProUGUI[choices.Length]; // starting the choice text array with the same lenght as the number of options avaible in the scene
         thisChoices = new List<string>();
+
+        voiceLine = SoundMannager.Instance.Sfx_computerType; // starts the voiceLine as a computer voice
 
         int index = 0;
         foreach (GameObject choice in choices)
@@ -157,7 +158,7 @@ public class DialogMannagerV2 : MonoBehaviour
 
             }
             else if (currentScentence.Contains("-CALL:")){
-                eventsTrigger.triggerEvent(currentScentence.Split(":")[1]);
+                eventsTrigger.triggerEvent(currentScentence.Split(":")[1].Trim());
                 scentenceIndex++;
                 currentScentence = thisStory[scentenceIndex];
             }
@@ -184,17 +185,16 @@ public class DialogMannagerV2 : MonoBehaviour
             {               
                 if (currentScentence.Split(":")[1].Trim() == "MACHINE")
                 {
-                    AudioIndex = 0;
+                    voiceLine = SoundMannager.Instance.Sfx_computerType;
                 }
                 else if (currentScentence.Split(":")[1].Trim() == "FEMALE")
                 {
-                    AudioIndex = 1;
+                    voiceLine = SoundMannager.Instance.Sfx_femaleVoice;
                 }
                 else if (currentScentence.Split(":")[1].Trim() == "MALE")
                 {
-                    AudioIndex = 2;
+                    voiceLine = SoundMannager.Instance.Sfx_maleVoice;
                 }
-                Debug.Log(AudioIndex);
                 scentenceIndex++;
                 currentScentence = thisStory[scentenceIndex];
 
@@ -272,13 +272,13 @@ public class DialogMannagerV2 : MonoBehaviour
     }
     public void MakeChoice(int id)
     {
-        SoundMannager.Instance.PlaySound(clip[3]);
+        SoundMannager.Instance.PlaySound(SoundMannager.Instance.Sfx_confirm);
         scentenceIndex = linesForCall[id];
         StartCoroutine(DialogUpdate());
     }
 
     private void PlaySpeakFx()
     {
-        SoundMannager.Instance.PlaySound(clip[AudioIndex]);
+        SoundMannager.Instance.PlaySound(voiceLine);
     }
 }

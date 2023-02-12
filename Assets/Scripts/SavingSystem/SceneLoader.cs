@@ -36,10 +36,6 @@ public class SceneLoader : MonoBehaviour
                 EventsData.happenedEvents.Add(events);
             }
         }
-        if (SavingController.LoadLastScene() != null)
-        {
-            Debug.Log(SavingController.LoadLastScene().savedScene);
-        }
     }
     
 }

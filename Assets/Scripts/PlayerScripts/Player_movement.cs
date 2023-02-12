@@ -26,6 +26,7 @@ public class Player_movement : MonoBehaviour
     private void Start()
     {
         animator = GetComponent<Animator>();
+        moveJoystick = FixedJoystick.Instance;
     }
     private void Awake()
     {

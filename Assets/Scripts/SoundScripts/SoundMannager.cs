@@ -4,6 +4,17 @@ using UnityEngine;
 
 public class SoundMannager : MonoBehaviour
 {
+    public AudioClip Sfx_PcOn;
+    public AudioClip Sfx_PcOff;
+    public AudioClip Sfx_PcError;
+    public AudioClip Sfx_PcSuccess;
+    public AudioClip Sfx_femaleVoice;
+    public AudioClip Sfx_maleVoice;
+    public AudioClip Sfx_computerType;
+    public AudioClip Sfx_confirm;
+    public AudioClip Sfx_Save;
+
+
     public static SoundMannager Instance;
     [SerializeField] private AudioSource _fxSource;
 

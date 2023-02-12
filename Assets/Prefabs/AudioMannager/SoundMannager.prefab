@@ -173,4 +173,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 29161031cef4d94469a380811629fded, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Sfx_PcOn: {fileID: 8300000, guid: 9e46fe14597118a42b0ffac83057ea91, type: 3}
+  Sfx_PcOff: {fileID: 8300000, guid: 54df38f609b4a4640849e7dbbb7387e1, type: 3}
+  Sfx_PcError: {fileID: 8300000, guid: f88b5a6f7d4ca264b8b7d544b5cbf974, type: 3}
+  Sfx_PcSuccess: {fileID: 8300000, guid: 1b2515d71e6dfde46a4643b3fbbb02d8, type: 3}
+  Sfx_femaleVoice: {fileID: 8300000, guid: 465ad32fa38b57340877915ac667cbbc, type: 3}
+  Sfx_maleVoice: {fileID: 8300000, guid: 7470688afdf3bbc4fa996df329c1e137, type: 3}
+  Sfx_computerType: {fileID: 8300000, guid: 42d0df1b18fecfd4ba5e316634ffc140, type: 3}
+  Sfx_confirm: {fileID: 8300000, guid: d69b1477cd8560048a45508bf3bcb204, type: 3}
+  Sfx_Save: {fileID: 8300000, guid: fa59f34ef4a53324c905453dd30c4979, type: 3}
   _fxSource: {fileID: 4069991640302620235}

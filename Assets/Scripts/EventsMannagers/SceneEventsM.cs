@@ -16,6 +16,8 @@ public class SceneEventsM : MonoBehaviour
     [SerializeField] private Sprite vickTutorial;
     [SerializeField] private DoorSwitcher[] Wdoor;
 
+    [SerializeField] private EventMannager evMan;
+
     public void triggerEvent(string name) {
         switch (name.Trim())
         {

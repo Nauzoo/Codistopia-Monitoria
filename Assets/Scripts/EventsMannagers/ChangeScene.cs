@@ -7,6 +7,19 @@ public class ChangeScene : MonoBehaviour
 {
     [SerializeField] private Animator fadeAnim;
     [SerializeField] private GameObject fader;
+
+    public static ChangeScene Instance;
+    private void Awake()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+        }
+        else
+        {
+            Debug.LogWarning("There are more than one intance of the ChangeScene class!");
+        }
+    }
     private void Start()
     {        
         StartCoroutine(StartScene());

@@ -17,7 +17,6 @@ public class DoorSwitcher : MonoBehaviour
         {
             this.gameObject.SetActive(!MyState);
         }
-        Debug.Log("activated");
     }
     
     public void SwitchState()

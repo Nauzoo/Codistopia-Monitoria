@@ -6,7 +6,6 @@ using UnityEngine.SceneManagement;
 public class Open_door : MonoBehaviour
 {
     [SerializeField] private GameObject visualCue;
-    [SerializeField] ChangeScene scneChanger;
     private Animator animator;
 
     [SerializeField] int myDoorId;
@@ -21,13 +20,13 @@ public class Open_door : MonoBehaviour
         if (collider.gameObject.tag == "Player"){
             if (InteractionMannager.GetInstance().Interaction())
             { // checks for the interaction button input 
+                InteractionMannager.GetInstance().CloseInteraction(); // closes the interaction event
                 LastScene.lastPassedScene = SceneManager.GetActiveScene().buildIndex;
                 LastScene.lastPlayerPos = Player_movement.GetInstance().transform.position;
                 LastScene.lastVickPos = VickFollower.GetInstance().transform.position;
-                Debug.Log(LastScene.lastVickPos);
                 animator.SetTrigger("open");
-                scneChanger.ChangeToScene(myDoorId);
-                InteractionMannager.GetInstance().CloseInteraction(); // closes the interaction event
+                ChangeScene.Instance.ChangeToScene(myDoorId);
+                
             }
         }
     }

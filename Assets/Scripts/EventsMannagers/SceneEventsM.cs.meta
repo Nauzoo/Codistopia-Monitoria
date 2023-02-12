@@ -3,7 +3,15 @@ guid: b579488a6afdf2e4a8d445f61475b8ec
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - squareColor: {instanceID: 0}
+  - sceneChanger: {instanceID: 0}
+  - PcOn: {instanceID: 0}
+  - saveFx: {instanceID: 0}
+  - IdeEvent: {instanceID: 0}
+  - Marisa: {instanceID: 0}
+  - vickyFaceIde: {instanceID: 0}
+  - vickTutorial: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
