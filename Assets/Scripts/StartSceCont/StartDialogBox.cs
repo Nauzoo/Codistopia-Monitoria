@@ -94,12 +94,8 @@ public class StartDialogBox : MonoBehaviour
 
     private void NewGame()
     {
-        /*Player_movement.GetInstance().transform.position = new Vector2(0, 0);
-        SavingController.SavePlayer(Player_movement.GetInstance());
-        SavingController.SaveLastScene(1);
-
-        SavedSceneData NewScene = SavingController.LoadLastScene();
-        sceneChanger.ChangeToScene(NewScene.savedScene);*/
+        EventMannager.DeleteSave();
+        StartGame();
 
     }
 
