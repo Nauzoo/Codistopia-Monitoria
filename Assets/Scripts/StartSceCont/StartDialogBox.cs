@@ -8,8 +8,6 @@ public class StartDialogBox : MonoBehaviour
     [SerializeField] private TextMeshProUGUI ConfTxt;
     [SerializeField] private GameObject[] buttons;
 
-    [SerializeField] private ChangeScene sceneChanger;
-
     private int myId;
     void Start()
     {
@@ -86,33 +84,28 @@ public class StartDialogBox : MonoBehaviour
     }
     public void StartGame()
     {
-        SavedSceneData StartScene = SavingController.LoadLastScene();
-        float[] PlayerPos = SavingController.LoadPlayer().position;
-        float[] VickPos = SavingController.LoadVick().positions;
+        SavingController.LoadLastScene();
+        Vector2 PlayerPos = SavingController.LoadPlayer();
+        Vector2 VickPos = SavingController.LoadVick();
         LastScene.lastPlayerPos = new Vector2(PlayerPos[0], PlayerPos[1]);
         LastScene.lastVickPos = new Vector2(VickPos[0], VickPos[1]);
-        sceneChanger.ChangeToScene(StartScene.savedScene);
+        ChangeScene.Instance.ChangeToScene(SavedSceneData.savedScene);
     }
 
     private void NewGame()
     {
-        //Player_movement.GetInstance().transform.position = new Vector2(0, 0);
-        //SavingController.SavePlayer(Player_movement.GetInstance());
+        /*Player_movement.GetInstance().transform.position = new Vector2(0, 0);
+        SavingController.SavePlayer(Player_movement.GetInstance());
         SavingController.SaveLastScene(1);
 
         SavedSceneData NewScene = SavingController.LoadLastScene();
-        sceneChanger.ChangeToScene(NewScene.savedScene);
+        sceneChanger.ChangeToScene(NewScene.savedScene);*/
 
     }
 
     private void Quit()
     {
         Application.Quit();
-    }
-
-    private void ChangeScene()
-    {
-
     }
 
 }

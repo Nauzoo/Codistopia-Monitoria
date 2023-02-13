@@ -587,6 +587,7 @@ GameObject:
   m_Component:
   - component: {fileID: 450048069}
   - component: {fileID: 450048070}
+  - component: {fileID: 450048071}
   m_Layer: 5
   m_Name: EventsHandler
   m_TagString: Untagged
@@ -637,6 +638,20 @@ MonoBehaviour:
   - {fileID: 1890198788}
   - {fileID: 1106463558}
   - {fileID: 732299493}
+--- !u!114 &450048071
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 450048068}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 194383b95b6bddd46b882f32921f1799, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fadeAnim: {fileID: 601814246}
+  fader: {fileID: 601814245}
 --- !u!1 &488045560
 GameObject:
   m_ObjectHideFlags: 0
@@ -2534,7 +2549,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1631803095}
-  - component: {fileID: 1631803097}
   - component: {fileID: 1631803098}
   m_Layer: 0
   m_Name: SceneCont
@@ -2558,20 +2572,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1631803097
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1631803094}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 194383b95b6bddd46b882f32921f1799, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  fadeAnim: {fileID: 601814246}
-  fader: {fileID: 601814245}
 --- !u!114 &1631803098
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2588,7 +2588,6 @@ MonoBehaviour:
   buttons:
   - {fileID: 1175301132}
   - {fileID: 149691989}
-  sceneChanger: {fileID: 1631803097}
 --- !u!1 &1740240543
 GameObject:
   m_ObjectHideFlags: 0

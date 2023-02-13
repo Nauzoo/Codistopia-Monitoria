@@ -17,6 +17,10 @@ public abstract class EventMannager : MonoBehaviour
         SavingController.SaveLastScene(sceneId);
         SoundMannager.Instance.PlaySound(SoundMannager.Instance.Sfx_Save);
     }
+    public void DeleteSave()
+    {
+        SaveKiller.DELETE_SAVE();
+    }
     public void savingSceneConf()
     {
         LastScene.lastPassedScene = SceneManager.GetActiveScene().buildIndex;

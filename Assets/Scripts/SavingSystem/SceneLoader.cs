@@ -20,14 +20,19 @@ public class SceneLoader : MonoBehaviour
     }
     private void Start()
     {
-        Vector2 playerPos = LastScene.lastPlayerPos;
-        Vector2 vickPos = LastScene.lastVickPos;
+        if (LastScene.lastPlayerPos != Vector2.zero)
+        {
+            Vector2 playerPos = LastScene.lastPlayerPos;
+            Player_movement player = Player_movement.GetInstance();
+            player.transform.position = playerPos;
 
-        Player_movement player = Player_movement.GetInstance();
-        VickFollower vick = VickFollower.GetInstance();
-        
-        player.transform.position = playerPos;
-        vick.gameObject.transform.position = vickPos;
+        }
+        if (LastScene.lastVickPos != Vector2.zero)
+        {
+            Vector2 vickPos = LastScene.lastVickPos;
+            VickFollower vick = VickFollower.GetInstance();
+            vick.gameObject.transform.position = vickPos;
+        }
 
         if (SavingController.LoadEvents() != null)
         {

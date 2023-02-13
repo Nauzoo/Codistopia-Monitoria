@@ -18,7 +18,11 @@ public class OutsideEvents : EventMannager
                     element.SwitchState();
                 }
                 break;
-            
+
+            case "killSave":
+                DeleteSave();
+                break;
+
             case "SaveGame":
                 SaveGame();
                 break;

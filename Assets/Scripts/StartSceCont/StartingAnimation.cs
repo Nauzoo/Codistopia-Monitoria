@@ -48,8 +48,8 @@ public class StartingAnimation : MonoBehaviour
         codeTxt.text = ">> ";
         yield return new WaitForSeconds(2);
 
-        StartCoroutine(TypeCode("cd: Codistopia.exe", 0.2f));
-        yield return new WaitForSeconds(4);
+        StartCoroutine(TypeCode("cd: Codistopia.exe", 0.1f));
+        yield return new WaitForSeconds(3);
 
         StartCoroutine(DisplayLines(codeLines, 0.1f));
 
@@ -58,12 +58,11 @@ public class StartingAnimation : MonoBehaviour
         StartCoroutine(TypeCode("como ser um programador?", 0.05f));
         yield return new WaitForSeconds(2);
         StartCoroutine(DisplayLines(codeLines, 0.1f));
-        yield return new WaitForSeconds(1);
         fader.SetTrigger("Fade");
-        yield return new WaitForSeconds(6);
+        yield return new WaitForSeconds(4);
         GlitchEffect.colorDrift = 0;
         Title.SetActive(true);
-        yield return new WaitForSeconds(5);
+        yield return new WaitForSeconds(3);
         Title.SetActive(false);
         yield return new WaitForSeconds(1);
 
@@ -71,7 +70,7 @@ public class StartingAnimation : MonoBehaviour
         foreach (GameObject button in buttons)
         {
             button.SetActive(true);
-            yield return new WaitForSeconds(1);
+            yield return new WaitForSeconds(0.5f);
         } 
 
     }
