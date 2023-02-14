@@ -12,37 +12,29 @@ public static class SavingController
         Vector2 pPos = player.transform.position;
 
         File.WriteAllText(path, $"POSITION:{pPos[0]};{pPos[1]}");
-
-        /*BinaryFormatter binaryFormatter = new BinaryFormatter();
-        
-        FileStream fileStream = new FileStream(path, FileMode.Create);
-
-        PlayerData playerData = new PlayerData(player);
-
-        binaryFormatter.Serialize(fileStream, playerData);
-        fileStream.Close();*/
     }
 
     public static Vector2 LoadPlayer()
-    {
+    {        
         string path = Application.persistentDataPath + "/playerData.txt";
-        string pPos = File.ReadAllText(path);
+        if (File.ReadAllText(path) != "nullity")
+        {
+            
+            string pPos = File.ReadAllText(path);
 
-        bool _ = float.TryParse(pPos.Split(":")[1].Split(";")[0], out float Xpos);
-        bool __ = float.TryParse(pPos.Split(":")[1].Split(";")[1], out float Ypos);
+            bool _ = float.TryParse(pPos.Split(":")[1].Split(";")[0], out float Xpos);
+            bool __ = float.TryParse(pPos.Split(":")[1].Split(";")[1], out float Ypos);
 
-        Vector2 lPos = new Vector2(Xpos, Ypos);
+            Vector2 lPos = new Vector2(Xpos, Ypos);
 
-        return lPos;
-
-        /*
-        BinaryFormatter binaryFormatter = new BinaryFormatter();
-        FileStream fileStream = new FileStream(path, FileMode.Open);
-
-        PlayerData playerLoad = binaryFormatter.Deserialize(fileStream) as PlayerData;
-        fileStream.Close();
-
-        return playerLoad.position;*/
+            return lPos;
+            
+        }
+        else
+        {
+            return Vector2.zero;
+        }
+       
     }
 
     public static void SaveEvents()
@@ -50,20 +42,16 @@ public static class SavingController
         string path = Application.persistentDataPath + "/eventData.txt";
 
         string formated = "";
-        foreach (string hEvent in EventsData.happenedEvents)
+        if (EventsData.happenedEvents.Count > 0)
         {
-            formated += hEvent + ";";
+            foreach (string hEvent in EventsData.happenedEvents)
+            {
+                formated += hEvent + ";";
+            }
         }
 
         File.WriteAllText(path, formated);
-        
-        /*BinaryFormatter binaryFormatter = new BinaryFormatter();
-        string path = Application.persistentDataPath + "/eventSave.nut";
-        FileStream fileStream = new FileStream(path, FileMode.Create);
-                
 
-        binaryFormatter.Serialize(fileStream, EventsData.happenedEvents);
-        fileStream.Close();*/
     }
     public static List<string> LoadEvents()
     {
@@ -86,89 +74,59 @@ public static class SavingController
         {
             return null;
         }
-
-        /*if (File.Exists(path))
-        {
-            BinaryFormatter binaryFormatter = new BinaryFormatter();
-            FileStream fileStream = new FileStream(path, FileMode.Open);
-
-            List<string> events = binaryFormatter.Deserialize(fileStream) as List<string>;
-            fileStream.Close();
-
-            return events;
-        }
-        else
-        {
-            Debug.LogError("Tried to access an unexisting file");
-            return null;
-        }*/
     }
 
     public static void SaveLastScene(int ID)
     {
         string path = Application.persistentDataPath + "/sceneData.txt";
         File.WriteAllText(path, $"LAST_SAVED_SCENE:{ID}");
-
-        /*BinaryFormatter binaryFormatter = new BinaryFormatter();
-
-        FileStream fileStream = new FileStream(path, FileMode.Create);
-        SavedSceneData lastScene = new SavedSceneData();
-        lastScene.holder= ID;
-
-        binaryFormatter.Serialize(fileStream, lastScene);
-        fileStream.Close();*/
     }
 
     public static void LoadLastScene()
     {
         string path = Application.persistentDataPath + "/sceneData.txt";
-        string lScen = File.ReadAllText(path);
-
-        lScen = lScen.Split(":")[1];
-
-        SavedSceneData.savedScene = int.Parse(lScen);
-
-        /*BinaryFormatter binaryFormatter = new BinaryFormatter();
-        if (File.Exists(path))
+        if (File.ReadAllText(path) != "nullity")
         {
-            FileStream fileStream = new FileStream(path, FileMode.Open);
 
-            SavedSceneData lastScene = binaryFormatter.Deserialize(fileStream) as SavedSceneData;
-            fileStream.Close();
-            SavedSceneData.savedScene = lastScene.holder;
-            
+            string lScen = File.ReadAllText(path);
+
+            lScen = lScen.Split(":")[1];
+
+            SavedSceneData.savedScene = int.Parse(lScen);
         }
         else
         {
-            Debug.LogError("Tried to access an unexisting file");
-            
-        }*/
-
+            SavedSceneData.savedScene = 2;
+        }
     }
     public static void SaveVick(VickFollower vick)
     {
-        /*BinaryFormatter binaryFormatter = new BinaryFormatter();
-        string path = Application.persistentDataPath + "/vickSave.nut";
+        string path = Application.persistentDataPath + "/vickyData.txt";
+        Vector2 pPos = vick.transform.position;
 
-        FileStream fileStream = new FileStream(path, FileMode.Create);
-
-        VickyData vickData = new VickyData(vick);
-
-        binaryFormatter.Serialize(fileStream, vickData);
-        fileStream.Close();*/
+        File.WriteAllText(path, $"POSITION:{pPos[0]};{pPos[1]}");
     }
     public static Vector2 LoadVick()
     {
-        /*string path = Application.persistentDataPath + "/vickSave.nut";
-        BinaryFormatter binaryFormatter = new BinaryFormatter();
-        FileStream fileStream = new FileStream(path, FileMode.Open);
+        string path = Application.persistentDataPath + "/vickyData.txt";
+        if (File.ReadAllText(path) != "nullity")
+        {
 
-        VickyData vickLoad = binaryFormatter.Deserialize(fileStream) as VickyData;
-        fileStream.Close();
+            string pPos = File.ReadAllText(path);
 
-        return vickLoad.position;*/
-        return Vector2.zero;
-        
+            bool _ = float.TryParse(pPos.Split(":")[1].Split(";")[0], out float Xpos);
+            bool __ = float.TryParse(pPos.Split(":")[1].Split(";")[1], out float Ypos);
+
+            Vector2 lPos = new Vector2(Xpos, Ypos);
+
+            return lPos;
+
+        }
+        else
+        {
+            return Vector2.zero;
+        }
+
     }
     
 }

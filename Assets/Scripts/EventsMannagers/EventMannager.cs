@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.SceneManagement;
 using UnityEngine;
+using System.IO;
 
 public abstract class EventMannager : MonoBehaviour
 {
@@ -17,9 +18,16 @@ public abstract class EventMannager : MonoBehaviour
         SavingController.SaveLastScene(sceneId);
         SoundMannager.Instance.PlaySound(SoundMannager.Instance.Sfx_Save);
     }
-    public void DeleteSave()
+    public static void DeleteSave()
     {
-        SaveKiller.DELETE_SAVE();
+        Debug.Log("Deleting save data...");
+
+        string path1 = Application.persistentDataPath + "/playerData.txt";
+        string path2 = Application.persistentDataPath + "/eventData.txt";
+        string path3 = Application.persistentDataPath + "/sceneData.txt";
+        File.WriteAllText(path1, "nullity");
+        File.WriteAllText(path2, "");
+        File.WriteAllText(path3, "nullity");
     }
     public void savingSceneConf()
     {
