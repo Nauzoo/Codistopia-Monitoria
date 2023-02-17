@@ -1245,7 +1245,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79d7a197557060e4191fb63b43819400, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  myCode: test for 101
+  myCode: {fileID: 0}
 --- !u!114 &1327899469
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1860,10 +1860,14 @@ PrefabInstance:
     serializedVersion: 2
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2138557000104306462, guid: 3478915ef433a5441a8fd130647ff9dd, type: 3}
+      propertyPath: myCode
+      value: 
+      objectReference: {fileID: 4900000, guid: ddee03c2095de554aa25931b4e0fd572, type: 3}
     - target: {fileID: 2138557000104306463, guid: 3478915ef433a5441a8fd130647ff9dd, type: 3}
       propertyPath: pcScreen
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1685065314}
     - target: {fileID: 2138557000504964883, guid: 3478915ef433a5441a8fd130647ff9dd, type: 3}
       propertyPath: m_Name
       value: PC_PREFAB

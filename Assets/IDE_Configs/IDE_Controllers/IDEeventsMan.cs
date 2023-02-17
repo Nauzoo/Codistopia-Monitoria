@@ -17,6 +17,18 @@ public class IDEeventsMan : EventMannager
 
     private int errorCount = 0;
 
+    public static IDEeventsMan Instance;
+    private void Awake()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+        }
+        else
+        {
+            Debug.LogWarning("There are more then one instance of the IDE_EVENTS_M class in this scene!");
+        }
+    }
     void Start()
     {
         StartTutorial();
@@ -68,13 +80,12 @@ public class IDEeventsMan : EventMannager
             StartCoroutine(ShowResult("<color=red>Erro de compilacao!"));
             SoundMannager.Instance.PlaySound(error);
             sumError();
-            StartCoroutine(ShowTip());
+            StartCoroutine(ErrorMsg());
         }
     }
 
-    private IEnumerator ShowTip()
+    private IEnumerator ErrorMsg()
     {
-        interButton.SetActive(true);
         if (errorCount < 10)
         {
             vickyFace.sprite = vickyFaces[0];
@@ -84,10 +95,22 @@ public class IDEeventsMan : EventMannager
             vickyFace.sprite = vickyFaces[1];
         }
         yield return new WaitForSeconds(1);
+        interButton.SetActive(true);
+        List<string> tipDialog = new List<string>();
+        tipDialog.Add(TipsForCode.cliche);
+        tipDialog.Add("Você pode receber dicas clicando no botão '?'");       
+        tipDialog.Add("-CALL:TutClose");
+        tipDialog.Add("-END");
+        DialogMannagerV2.GetInstance().TriggerDialog(tipDialog);
+       
+    }
+
+    private void ShowTip()
+    {
+        interButton.SetActive(true);
         List<string> myTips = new List<string>(TipsForCode.tips.Split("\n"));
         string tip = myTips[Random.Range(0, myTips.Count)];
         List<string> tipDialog = new List<string>();
-        tipDialog.Add(TipsForCode.cliche);
         tipDialog.Add(tip);
         tipDialog.Add("-CALL:TutClose");
         tipDialog.Add("-END");

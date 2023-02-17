@@ -1,1 +1,1 @@
-if(true){write('...')}
+import vickyController; vicky.move(3, 'R'); vicky.move(4, 'U'); ## vicky.move(1,'R');vicky.move(1,'R');vicky.move(1,'R');vicky.move(1,'U');vicky.move(1,'U');vicky.move(1,'U');vicky.move(1,'U'); ## for interval (var n=0, n=3) {vicky.move(1,'R');} forinterval(var n=0, n=4){ vicky.move(1,'U'); }

@@ -32,6 +32,11 @@ public class UI_Buttons : MonoBehaviour
         }
     }
 
+    public void askHELP()
+    {
+        IDEeventsMan.Instance.triggerEvent("ShowTip");        
+    }
+
     public void CloseIDE()
     {
         SoundMannager.Instance.PlaySound(pcOff);

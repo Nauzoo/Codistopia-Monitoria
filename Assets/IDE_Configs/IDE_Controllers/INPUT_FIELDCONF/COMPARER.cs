@@ -4,8 +4,10 @@ using UnityEngine;
 
 public class COMPARER : MonoBehaviour
 {
-    private string formatedTempCode;
+    private string[] formatedTempCodes;
     [SerializeField] private IDEeventsMan IdeEvent;
+
+    private bool hasErros;
 
     public static COMPARER Instance;
     private void Awake()
@@ -29,12 +31,15 @@ public class COMPARER : MonoBehaviour
     }
     private void Start()
     {
-        if (CurrentCode.text != null)
+        if (CurrentCode.textArray != null)
         {
-            formatedTempCode = formatCode(CurrentCode.text);
+            formatedTempCodes = new string[CurrentCode.textArray.Length];
+            for (int i = 0; i < CurrentCode.textArray.Length; i++)
+            {
+                formatedTempCodes[i] = formatCode(CurrentCode.textArray[i]);
+            }
         }
-        else { 
-            formatedTempCode = "the quick brown fox jumps over the lazy dog";
+        else {
             Debug.LogWarning("Inicialized without Temp. Code!");
         }                
         
@@ -85,35 +90,49 @@ public class COMPARER : MonoBehaviour
         
         string formatedTypCode = formatCode(code);
 
-        int typeIncreaser = 0;
-        int tempIncreaser = 0;
-        bool hasErros = false;
-        for (int i = 0; i < formatedTempCode.Length; i++)
+        foreach (string formatedTempCode in formatedTempCodes)
         {
-            if (formatedTempCode[i] == '\n' || formatedTempCode[i] == '\t')
+            int typeIncreaser = 0;
+            int tempIncreaser = 0;
+            hasErros = false;
+
+            for (int i = 0; i < formatedTempCode.Length; i++)
             {
-                tempIncreaser++;
-            }
-            
-            if (formatedTypCode[i] == '\n' || formatedTempCode[i] == '\t')
-            {
-                if (formatedTypCode[i + tempIncreaser] == '\n')
+                if (!hasErros)
+                {
+                    continue;
+                }
+
+                if (formatedTempCode[i] == '\n' || formatedTempCode[i] == '\t')
+                {
+                    tempIncreaser++;
+                }
+
+                if (formatedTypCode[i] == '\n' || formatedTempCode[i] == '\t')
+                {
+                    if (formatedTypCode[i + tempIncreaser] == '\n')
                     {
                         POSITION.Line += 1;
                     }
-                typeIncreaser++;
-            }
+                    typeIncreaser++;
+                }
 
-            if (formatedTempCode[i + tempIncreaser] == formatedTypCode[i + typeIncreaser])
-            {                
-                continue;                
+                if (formatedTempCode[i + tempIncreaser] == formatedTypCode[i + typeIncreaser])
+                {
+                    continue;
+                }
+                else
+                {
+                    hasErros = true;
+                    Debug.Log(formatedTempCode[i]);
+                    Debug.Log(formatedTypCode[i]);
+                    Debug.Log($"line: {POSITION.GetPosition()[0]}, char: {POSITION.GetPosition()[1]}");
+                    break;
+                }
             }
-            else
-            {                                
-                hasErros = true;
-                Debug.Log(formatedTempCode[i]);
-                Debug.Log(formatedTypCode[i]);
-                break;
+            if (!hasErros)
+            {
+                continue;
             }
         }
         IdeEvent.showCompResult(hasErros);
