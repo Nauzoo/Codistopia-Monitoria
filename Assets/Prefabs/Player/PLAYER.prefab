@@ -101,7 +101,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 3
-  moveJoystick: {fileID: 0}
 --- !u!61 &6743241433559090241
 BoxCollider2D:
   m_ObjectHideFlags: 0

@@ -14,10 +14,6 @@ public class UI_Buttons : MonoBehaviour
     private int zoomMin = -10;
     private int currentZoom = 0;
 
-    private void Start()
-    {
-        
-    }
     public void ZoomIn(){
         if (currentZoom < zoomMax)
         {

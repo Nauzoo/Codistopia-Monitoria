@@ -1075,6 +1075,10 @@ PrefabInstance:
       propertyPath: m_Follow
       value: 
       objectReference: {fileID: 1643005265}
+    - target: {fileID: 5965550077150947756, guid: c6ea6b9e4c9d20748938e36431702a92, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5965550077150947757, guid: c6ea6b9e4c9d20748938e36431702a92, type: 3}
       propertyPath: m_RootOrder
       value: 5
@@ -1388,9 +1392,33 @@ PrefabInstance:
     serializedVersion: 2
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 6743241433559090240, guid: 63d2d7d63ee212343ad0914b1fed5dbd, type: 3}
+      propertyPath: m_BodyType
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6743241433559090240, guid: 63d2d7d63ee212343ad0914b1fed5dbd, type: 3}
+      propertyPath: m_LinearDrag
+      value: 1000
+      objectReference: {fileID: 0}
+    - target: {fileID: 6743241433559090240, guid: 63d2d7d63ee212343ad0914b1fed5dbd, type: 3}
+      propertyPath: m_AngularDrag
+      value: 1000
+      objectReference: {fileID: 0}
+    - target: {fileID: 6743241433559090240, guid: 63d2d7d63ee212343ad0914b1fed5dbd, type: 3}
+      propertyPath: m_Interpolate
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6743241433559090240, guid: 63d2d7d63ee212343ad0914b1fed5dbd, type: 3}
+      propertyPath: m_CollisionDetection
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6743241433559090253, guid: 63d2d7d63ee212343ad0914b1fed5dbd, type: 3}
       propertyPath: m_Name
       value: PLAYER
+      objectReference: {fileID: 0}
+    - target: {fileID: 6743241433559090254, guid: 63d2d7d63ee212343ad0914b1fed5dbd, type: 3}
+      propertyPath: speed
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 6743241433559090255, guid: 63d2d7d63ee212343ad0914b1fed5dbd, type: 3}
       propertyPath: m_RootOrder

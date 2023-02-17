@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class SceneEventsM : MonoBehaviour
+public class SceneEventsM : EventMannager
 {
     [SerializeField] private SquareColor squareColor;
     [SerializeField] private ChangeScene sceneChanger;
@@ -18,7 +18,7 @@ public class SceneEventsM : MonoBehaviour
 
     [SerializeField] private EventMannager evMan;
 
-    public void triggerEvent(string name) {
+    public override void triggerEvent(string name) {
         switch (name.Trim())
         {
             case "OpenPc":
@@ -54,11 +54,11 @@ public class SceneEventsM : MonoBehaviour
                 break;
 
             case "IdeStarTut":
-                IdeEvent.TriggerEvent("TutStart");
+                //IdeEvent.TriggerEvent("TutStart");
                 vickyFaceIde.sprite = vickTutorial;
                 break;
             case "IdeCloseTut":
-                IdeEvent.TriggerEvent("TutClose");
+                //IdeEvent.TriggerEvent("TutClose");
                 break;
 
             case "unlockW":
@@ -69,12 +69,6 @@ public class SceneEventsM : MonoBehaviour
                 }
                 break;
         }
-    }
-
-    public void savingSceneConf()
-    {
-        LastScene.lastPassedScene = SceneManager.GetActiveScene().buildIndex;
-        LastScene.lastPlayerPos = Player_movement.GetInstance().transform.position;
     }
 
 }

@@ -1,21 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using TMPro;
-using UnityEngine.UI;
 
 public class COMPARER : MonoBehaviour
 {
     private string formatedTempCode;
-    [SerializeField] private TextMeshProUGUI result;
-
-    [SerializeField] private AudioClip sucsses, error;
     [SerializeField] private IDEeventsMan IdeEvent;
 
-    [SerializeField] private Sprite[] vickyFaces;
-    [SerializeField] private Image vickyFace;
-
-    private int errosCount;
     public static COMPARER Instance;
     private void Awake()
     {
@@ -43,11 +34,9 @@ public class COMPARER : MonoBehaviour
             formatedTempCode = formatCode(CurrentCode.text);
         }
         else { 
-            formatedTempCode = "pkasd(0hasdb**hasbdbasbb";
+            formatedTempCode = "the quick brown fox jumps over the lazy dog";
             Debug.LogWarning("Inicialized without Temp. Code!");
-        }
-        result.gameObject.SetActive(false);
-        errosCount = 0;
+        }                
         
     }
     private string formatCode(string text)
@@ -127,40 +116,7 @@ public class COMPARER : MonoBehaviour
                 break;
             }
         }
-        if (!hasErros)
-        {            
-            StartCoroutine(ShowResult("<color=green>Codigo compilado com suceesso!"));
-            SoundMannager.Instance.PlaySound(sucsses);
-        }
-        else
-        {
-            StartCoroutine(ShowResult("<color=red>Erro de compilacao!"));
-            SoundMannager.Instance.PlaySound(error);
-            errosCount ++;
-            StartCoroutine(ShowTip());
-        }
+        IdeEvent.showCompResult(hasErros);
         
-    }
-
-    private IEnumerator ShowTip()
-    {
-        yield return new WaitForSeconds(1);
-        IdeEvent.TriggerEvent("ShowTip");
-        if (errosCount < 10)
-        {
-            vickyFace.sprite = vickyFaces[0];
-        }
-        else
-        {
-            vickyFace.sprite = vickyFaces[1];
-        }
-
-    }
-    private IEnumerator ShowResult(string res)
-    {
-        result.text = res;
-        result.gameObject.SetActive(true);
-        yield return new WaitForSeconds(2);
-        result.gameObject.SetActive(false);
     }
 }

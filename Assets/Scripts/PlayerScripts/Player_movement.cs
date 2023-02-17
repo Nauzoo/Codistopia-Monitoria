@@ -15,11 +15,13 @@ public class Player_movement : MonoBehaviour
     private const string WALK_FRONT_4 = "Walking_front";
 
     public int speed = 3; // player speed
-    public FixedJoystick moveJoystick; // Joystick class
+    private FixedJoystick moveJoystick; // Joystick class
     private Vector2 myMoveVector; // vecor x and y for current movement direction
     private Animator animator;
-    
+    private Rigidbody2D rb;
+
     private int lookinDir;
+    
 
     private static Player_movement playerInsyance;
 
@@ -27,6 +29,7 @@ public class Player_movement : MonoBehaviour
     {
         animator = GetComponent<Animator>();
         moveJoystick = FixedJoystick.Instance;
+        rb = GetComponent<Rigidbody2D>();        
     }
     private void Awake()
     {
@@ -76,9 +79,13 @@ public class Player_movement : MonoBehaviour
                     animator.Play(WALK_FRONT_4);
                     lookinDir = 4;
                 }
-            }            
-                        
+            }
+
+            //rb.velocity = myMoveVector * speed * Time.deltaTime;
+
             transform.Translate(speed * myMoveVector * Time.deltaTime); // move player's trasnform acording to myMoveVector
+            
+            
 
         }
         else
@@ -103,7 +110,6 @@ public class Player_movement : MonoBehaviour
         }
         
 
-    }       
+    }
 
-    
 }

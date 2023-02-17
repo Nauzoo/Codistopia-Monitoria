@@ -1208,12 +1208,12 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 325307009}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: -799.559, z: 0}
+  m_LocalScale: {x: 1.4712808, y: 3.4463751, z: 0.9999204}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1541667550}
+  m_Father: {fileID: 1810282138}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &325307011
@@ -1428,7 +1428,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2080710286}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: SceneEventsM, Assembly-CSharp
         m_MethodName: triggerEvent
         m_Mode: 5
@@ -2572,37 +2572,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac0b09e7857660247b1477e93731de29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &1142886820
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1142886821}
-  m_Layer: 0
-  m_Name: JoystickHolder
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1142886821
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1142886820}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -4.129462, y: -0.4356099, z: -4.01075}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 6
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1167080238
 GameObject:
   m_ObjectHideFlags: 0
@@ -3491,7 +3460,7 @@ GameObject:
   - component: {fileID: 1488009266}
   - component: {fileID: 1488009265}
   m_Layer: 31
-  m_Name: VickyFaces
+  m_Name: VickyFace
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3720,9 +3689,7 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 1937422053}
-  - {fileID: 325307010}
+  m_Children: []
   m_Father: {fileID: 142209410}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -3976,7 +3943,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1779554673}
   m_HandleRect: {fileID: 1779554671}
   m_Direction: 0
-  m_Value: 1
+  m_Value: 0
   m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -4535,6 +4502,8 @@ RectTransform:
   - {fileID: 612679108}
   - {fileID: 168014594}
   - {fileID: 1488009264}
+  - {fileID: 1937422053}
+  - {fileID: 325307010}
   m_Father: {fileID: 524179761}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -5013,11 +4982,11 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1937422052}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1328.711, y: 3.4541178, z: -7766.667}
-  m_LocalScale: {x: 72, y: 72, z: 72}
+  m_LocalPosition: {x: 1954.9069, y: -787.65485, z: -7766.0483}
+  m_LocalScale: {x: 105.93222, y: 248.139, z: 71.99427}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1541667550}
+  m_Father: {fileID: 1810282138}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1937422054
@@ -5044,12 +5013,7 @@ MonoBehaviour:
   - {fileID: 257233494}
   joystick: {fileID: 0}
   interButton: {fileID: 1931535055}
-  eventsTrigger: {fileID: 2080710286}
-  clip:
-  - {fileID: 8300000, guid: 42d0df1b18fecfd4ba5e316634ffc140, type: 3}
-  - {fileID: 8300000, guid: 465ad32fa38b57340877915ac667cbbc, type: 3}
-  - {fileID: 8300000, guid: 7470688afdf3bbc4fa996df329c1e137, type: 3}
-  - {fileID: 8300000, guid: d69b1477cd8560048a45508bf3bcb204, type: 3}
+  eventsTrigger: {fileID: 2080710287}
 --- !u!1 &1999004401
 GameObject:
   m_ObjectHideFlags: 0
@@ -5624,7 +5588,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2080710288}
   - component: {fileID: 2080710287}
-  - component: {fileID: 2080710286}
   m_Layer: 0
   m_Name: EventsMannager
   m_TagString: Untagged
@@ -5632,26 +5595,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &2080710286
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2080710285}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b579488a6afdf2e4a8d445f61475b8ec, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  squareColor: {fileID: 0}
-  sceneChanger: {fileID: 0}
-  PcOn: {fileID: 0}
-  saveFx: {fileID: 0}
-  IdeEvent: {fileID: 2080710287}
-  Marisa: {fileID: 0}
-  vickyFaceIde: {fileID: 1488009265}
-  vickTutorial: {fileID: 21300000, guid: 5f9830ec74a07fd4591b720571f0d4b3, type: 3}
 --- !u!114 &2080710287
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5665,6 +5608,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   interButton: {fileID: 1931535055}
+  result: {fileID: 1216477661}
+  sucsses: {fileID: 8300000, guid: 1b2515d71e6dfde46a4643b3fbbb02d8, type: 3}
+  error: {fileID: 8300000, guid: f88b5a6f7d4ca264b8b7d544b5cbf974, type: 3}
+  vickyFaces:
+  - {fileID: 21300000, guid: cdaac59c70a59bb4d928c59f627ebdc2, type: 3}
+  - {fileID: 21300000, guid: afcfb4aaa14a5d64695a9fe00bdef0be, type: 3}
+  vickyFace: {fileID: 1488009265}
 --- !u!4 &2080710288
 Transform:
   m_ObjectHideFlags: 0
@@ -5724,11 +5674,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 028b47bc36959f24cb787025aff10270, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  result: {fileID: 1216477661}
-  sucsses: {fileID: 8300000, guid: 1b2515d71e6dfde46a4643b3fbbb02d8, type: 3}
-  error: {fileID: 8300000, guid: f88b5a6f7d4ca264b8b7d544b5cbf974, type: 3}
   IdeEvent: {fileID: 2080710287}
-  vickyFaces:
-  - {fileID: 21300000, guid: b9ae82d87d231af41b8320011906ab00, type: 3}
-  - {fileID: 21300000, guid: afcfb4aaa14a5d64695a9fe00bdef0be, type: 3}
-  vickyFace: {fileID: 1488009265}

@@ -4,5 +4,5 @@ using UnityEngine;
 
 public static class CurrentCode
 {
-    public static string text;
+    public static string text = "skadidle skadoodle, your dick is now a noodle.";
 }
