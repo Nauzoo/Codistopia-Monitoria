@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 66c09b73d07e13d4c80d37108091dac1
+guid: 7e366750ffe1cad489045f5d3365c241
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -118,11 +118,53 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: House_2_0
+      name: CodistopiaLAB_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 64
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4bec3496942a25d478dc9b843ae20796
+      internalID: 276596629
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CodistopiaLAB_1
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 64
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: eca9bd45da3167f49ba7703a6b95fd4a
+      internalID: -1717126056
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CodistopiaLAB_2
       rect:
         serializedVersion: 2
         x: 32
-        y: 112
+        y: 64
         width: 16
         height: 16
       alignment: 0
@@ -132,18 +174,18 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a3dc6ef71aa666148a2f1afc6d6c45d8
-      internalID: 754885829
+      spriteID: 745e338fe21862745bd3b90aa204af68
+      internalID: -1582449250
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: House_2_1
+      name: CodistopiaLAB_3
       rect:
         serializedVersion: 2
         x: 48
-        y: 112
+        y: 64
         width: 16
         height: 16
       alignment: 0
@@ -153,18 +195,18 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1494e2aa681a8db4097be4354596490f
-      internalID: 1859056007
+      spriteID: fad8945c73754aa4aba77fa1ac054c09
+      internalID: 1085312044
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: House_2_2
+      name: CodistopiaLAB_4
       rect:
         serializedVersion: 2
         x: 64
-        y: 112
+        y: 64
         width: 16
         height: 16
       alignment: 0
@@ -174,18 +216,18 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8455fb44c1b4d4448a0ea7a5f2983522
-      internalID: 1988783667
+      spriteID: cc689605cc23dbd45b4af2e81c64bfb6
+      internalID: 1192795360
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: House_2_3
+      name: CodistopiaLAB_5
       rect:
         serializedVersion: 2
         x: 80
-        y: 112
+        y: 64
         width: 16
         height: 16
       alignment: 0
@@ -195,18 +237,18 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 48f2a278d4d741e4e898496b8488749e
-      internalID: -175021465
+      spriteID: 98633d7cfade4374b849b169dd9d1e5d
+      internalID: 660525976
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: House_2_4
+      name: CodistopiaLAB_6
       rect:
         serializedVersion: 2
         x: 96
-        y: 112
+        y: 64
         width: 16
         height: 16
       alignment: 0
@@ -216,18 +258,144 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 940ac4cd5f5733e46866fcaa5fc0baa1
-      internalID: 802490235
+      spriteID: 29ba0f89e86f5b64daf8df19e8b48ffb
+      internalID: 527467755
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: House_2_5
+      name: CodistopiaLAB_7
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 48
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 552445b2b81e21e4e8ed4b13e8412fe3
+      internalID: 269251810
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CodistopiaLAB_8
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 48
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8b7cc6cc8a7513f44ad9f3ec5e6d38d6
+      internalID: 1579561313
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CodistopiaLAB_9
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 48
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 865ceea656e22594ea52357f311a1d86
+      internalID: -592825688
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CodistopiaLAB_10
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 48
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e97bfef61c5c687439be195b61644358
+      internalID: -1009855362
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CodistopiaLAB_11
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 48
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: aa8d987c768a5594f857b833979030f6
+      internalID: -1917066289
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CodistopiaLAB_12
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 48
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8fe8cc890b2d897448f4742efa106bef
+      internalID: 1002886067
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CodistopiaLAB_13
       rect:
         serializedVersion: 2
         x: 112
-        y: 112
+        y: 48
         width: 16
         height: 16
       alignment: 0
@@ -237,18 +405,18 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 77ac770a19ac6e94780f080c727f40f5
-      internalID: -1856871050
+      spriteID: c9fa6046ea95dfa42a55d97728533d9c
+      internalID: 1899144986
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: House_2_6
+      name: CodistopiaLAB_14
       rect:
         serializedVersion: 2
         x: 128
-        y: 112
+        y: 48
         width: 16
         height: 16
       alignment: 0
@@ -258,18 +426,81 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2999d9eef15ff9743b149d60d9789561
-      internalID: 290665799
+      spriteID: 222e3add4ddd4fe48aa335e5ccffdca6
+      internalID: 2085560554
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: House_2_7
+      name: CodistopiaLAB_15
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 48
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c6876063cabf38b43907497facecaa90
+      internalID: -1768498067
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CodistopiaLAB_16
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 48
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b23c7968dfe039740824fa1223285ba9
+      internalID: 1653366160
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CodistopiaLAB_17
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 32
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c332784fc3d27ce40936aa4a59b612ae
+      internalID: 808447221
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CodistopiaLAB_18
       rect:
         serializedVersion: 2
         x: 32
-        y: 96
+        y: 32
         width: 16
         height: 16
       alignment: 0
@@ -279,18 +510,18 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6e23db05cb1f9ef479b096189bc6da7c
-      internalID: 500190816
+      spriteID: 46e8deb97326c5446a214a2b2d00382f
+      internalID: 421670719
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: House_2_8
+      name: CodistopiaLAB_19
       rect:
         serializedVersion: 2
         x: 48
-        y: 96
+        y: 32
         width: 16
         height: 16
       alignment: 0
@@ -300,18 +531,18 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: be49c5a30ada3d748bb3c6cff48f2fde
-      internalID: -48425296
+      spriteID: d416ee4cf254e244f9731bc1395a1fe1
+      internalID: -1235626546
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: House_2_9
+      name: CodistopiaLAB_20
       rect:
         serializedVersion: 2
         x: 64
-        y: 96
+        y: 32
         width: 16
         height: 16
       alignment: 0
@@ -321,18 +552,18 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 929ff39ddc6e072408b2f0e8e4b5d93a
-      internalID: -190959914
+      spriteID: 7fd3441849b887542aa3552b8b966844
+      internalID: -1984372923
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: House_2_10
+      name: CodistopiaLAB_21
       rect:
         serializedVersion: 2
         x: 80
-        y: 96
+        y: 32
         width: 16
         height: 16
       alignment: 0
@@ -342,18 +573,18 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f71e42f3e4e388d47b85a88070dc2034
-      internalID: 625225937
+      spriteID: 4f95dadb87b86c9439221824bd342454
+      internalID: 1181521832
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: House_2_11
+      name: CodistopiaLAB_22
       rect:
         serializedVersion: 2
         x: 96
-        y: 96
+        y: 32
         width: 16
         height: 16
       alignment: 0
@@ -363,18 +594,18 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4d88a63ec4c6c984d9444cb2c3846f99
-      internalID: -557977779
+      spriteID: 6e0fa1d097945e049b6e2d1ea1d9ced8
+      internalID: -168806224
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: House_2_12
+      name: CodistopiaLAB_23
       rect:
         serializedVersion: 2
         x: 112
-        y: 96
+        y: 32
         width: 16
         height: 16
       alignment: 0
@@ -384,18 +615,18 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ce597853b1b4e3c4781220b244c882dd
-      internalID: 56225224
+      spriteID: 5b2eb952016099849b61ae3f571bd3fd
+      internalID: -83312783
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: House_2_13
+      name: CodistopiaLAB_24
       rect:
         serializedVersion: 2
         x: 128
-        y: 96
+        y: 32
         width: 16
         height: 16
       alignment: 0
@@ -405,18 +636,18 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ece3aad2ba2779d4c896c1a436fca880
-      internalID: 1893225810
+      spriteID: 4f34a3421a6b4424296859c0dfd2c409
+      internalID: -1212136822
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: House_2_14
+      name: CodistopiaLAB_25
       rect:
         serializedVersion: 2
-        x: 32
-        y: 80
+        x: 144
+        y: 32
         width: 16
         height: 16
       alignment: 0
@@ -426,18 +657,18 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 61fbf201e8621c54095fd9481d764ded
-      internalID: -727451887
+      spriteID: 4def2eabf07dc574c949aa50aff9ce14
+      internalID: 991547469
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: House_2_15
+      name: CodistopiaLAB_26
       rect:
         serializedVersion: 2
-        x: 48
-        y: 80
+        x: 160
+        y: 32
         width: 16
         height: 16
       alignment: 0
@@ -447,374 +678,38 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 157c094c398a6f544989f066c0ce64b5
-      internalID: 1172849078
+      spriteID: e4e93ecdaf4975042ae6aeadefed38cc
+      internalID: -205132584
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: House_2_16
+      name: CodistopiaLAB_27
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 16
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 628cca9df5ef7574c8f82e235210c7bf
+      internalID: -1429097576
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CodistopiaLAB_28
       rect:
         serializedVersion: 2
         x: 64
-        y: 80
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: e71a02439707330408a554f095a2c756
-      internalID: -825659474
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: House_2_17
-      rect:
-        serializedVersion: 2
-        x: 80
-        y: 80
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: e62bc3a35503a504683d7b43dab87b27
-      internalID: 641913408
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: House_2_18
-      rect:
-        serializedVersion: 2
-        x: 96
-        y: 80
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 2b34dd4d332bdb949860db9d608d2214
-      internalID: -1676008198
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: House_2_19
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 64
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 6352b67c276eae046a55265084abe9b7
-      internalID: -239722246
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: House_2_20
-      rect:
-        serializedVersion: 2
-        x: 16
-        y: 64
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: c0a7ae4e0d14de340b077073e1096dd5
-      internalID: 73966946
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: House_2_21
-      rect:
-        serializedVersion: 2
-        x: 32
-        y: 64
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 649112d9390b6784a8378cf762d87057
-      internalID: -1003292303
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: House_2_22
-      rect:
-        serializedVersion: 2
-        x: 48
-        y: 64
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: a706b95f198125143b845e0384c75a93
-      internalID: 743596
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: House_2_23
-      rect:
-        serializedVersion: 2
-        x: 80
-        y: 64
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: b8f8775d28efaf343bcb338fbf65121e
-      internalID: 112337961
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: House_2_24
-      rect:
-        serializedVersion: 2
-        x: 96
-        y: 64
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 02f40157fbeed064fa758877c877e574
-      internalID: 643842816
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: House_2_25
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 48
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 8a43e672ee091fa4a9dfa13552016551
-      internalID: -542263807
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: House_2_26
-      rect:
-        serializedVersion: 2
-        x: 16
-        y: 48
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: b8654e0d557f2954d9eba14f35a32dc7
-      internalID: 2125299088
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: House_2_27
-      rect:
-        serializedVersion: 2
-        x: 32
-        y: 48
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 0642758a8c6373140a9934292845c4db
-      internalID: 453585162
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: House_2_28
-      rect:
-        serializedVersion: 2
-        x: 48
-        y: 48
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 904a35afce74f614e8d1c25a5fecad85
-      internalID: 597796794
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: House_2_29
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 32
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: e0fc6df608b6a8d4a869fbb07eb1feb7
-      internalID: 877020995
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: House_2_30
-      rect:
-        serializedVersion: 2
-        x: 16
-        y: 32
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 545849b8d8310b940a66e5fdf0a8d973
-      internalID: -1688006781
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: House_2_31
-      rect:
-        serializedVersion: 2
-        x: 32
-        y: 32
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: c8baa13e12491e840a1c861cfed9927b
-      internalID: -1166574966
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: House_2_32
-      rect:
-        serializedVersion: 2
-        x: 48
-        y: 32
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 170e1ea00d2b15448a6db70e786e36f6
-      internalID: 1687232426
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: House_2_33
-      rect:
-        serializedVersion: 2
-        x: 0
         y: 16
         width: 16
         height: 16
@@ -825,98 +720,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7ff61cf778ae7da47aaa286eab88db75
-      internalID: -906012603
+      spriteID: 9943fa6422072954880c1be0e5848231
+      internalID: 1694524233
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: House_2_34
-      rect:
-        serializedVersion: 2
-        x: 16
-        y: 16
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 025b8a7bcbb021b4e8a9ef50bfa597dd
-      internalID: -894702975
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: House_2_35
-      rect:
-        serializedVersion: 2
-        x: 32
-        y: 16
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: c922e83babf664349a91b833830db630
-      internalID: -250900685
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: House_2_36
-      rect:
-        serializedVersion: 2
-        x: 48
-        y: 16
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: c327ddea8f10ffb47a0e00f391bd49e5
-      internalID: -995504770
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: House_2_37
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 0
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: a159cc0e4fb245e4497df4450fbd67cb
-      internalID: 892359746
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: House_2_38
+      name: CodistopiaLAB_29
       rect:
         serializedVersion: 2
         x: 16
@@ -930,14 +741,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 171dc2af485334645955e0f8d8040d7b
-      internalID: 526814013
+      spriteID: 33118358f1528b2499ccde2a37f3fa34
+      internalID: -1365712434
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: House_2_39
+      name: CodistopiaLAB_30
       rect:
         serializedVersion: 2
         x: 32
@@ -951,14 +762,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0afb6ad355563154c93f1b3b441ea21e
-      internalID: -211876147
+      spriteID: ea80f720e03db614dbc805f511bca4a0
+      internalID: -625143792
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: House_2_40
+      name: CodistopiaLAB_31
       rect:
         serializedVersion: 2
         x: 48
@@ -972,8 +783,29 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a3de7e7ed21ff7847844b8df7841861e
-      internalID: -1642982717
+      spriteID: 119710d405761b445b749a7809b60b4d
+      internalID: -1868682372
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CodistopiaLAB_32
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3f7dccbf2ee8e9d40bd5a708d90ce321
+      internalID: -647244144
       vertices: []
       indices: 
       edges: []
@@ -989,47 +821,39 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      House_2_1: 1859056007
-      House_2_2: 1988783667
-      House_2_23: 112337961
-      House_2_27: 453585162
-      House_2_29: 877020995
-      House_2_4: 802490235
-      House_2_30: -1688006781
-      House_2_21: -1003292303
-      House_2_35: -250900685
-      House_2_26: 2125299088
-      House_2_0: 754885829
-      House_2_15: 1172849078
-      House_2_38: 526814013
-      House_2_22: 743596
-      House_2_20: 73966946
-      House_2_5: -1856871050
-      House_2_37: 892359746
-      House_2_31: -1166574966
-      House_2_3: -175021465
-      House_2_12: 56225224
-      House_2_7: 500190816
-      House_2_25: -542263807
-      House_2_13: 1893225810
-      House_2_33: -906012603
-      House_2_40: -1642982717
-      House_2_9: -190959914
-      House_2_10: 625225937
-      House_2_14: -727451887
-      House_2_32: 1687232426
-      House_2_34: -894702975
-      House_2_11: -557977779
-      House_2_39: -211876147
-      House_2_24: 643842816
-      House_2_8: -48425296
-      House_2_16: -825659474
-      House_2_17: 641913408
-      House_2_6: 290665799
-      House_2_36: -995504770
-      House_2_18: -1676008198
-      House_2_28: 597796794
-      House_2_19: -239722246
+      CodistopiaLAB_18: 421670719
+      CodistopiaLAB_25: 991547469
+      CodistopiaLAB_11: -1917066289
+      CodistopiaLAB_8: 1579561313
+      CodistopiaLAB_14: 2085560554
+      CodistopiaLAB_28: 1694524233
+      CodistopiaLAB_17: 808447221
+      CodistopiaLAB_13: 1899144986
+      CodistopiaLAB_31: -1868682372
+      CodistopiaLAB_6: 527467755
+      CodistopiaLAB_32: -647244144
+      CodistopiaLAB_20: -1984372923
+      CodistopiaLAB_26: -205132584
+      CodistopiaLAB_27: -1429097576
+      CodistopiaLAB_30: -625143792
+      CodistopiaLAB_12: 1002886067
+      CodistopiaLAB_24: -1212136822
+      CodistopiaLAB_2: -1582449250
+      CodistopiaLAB_0: 276596629
+      CodistopiaLAB_7: 269251810
+      CodistopiaLAB_10: -1009855362
+      CodistopiaLAB_9: -592825688
+      CodistopiaLAB_16: 1653366160
+      CodistopiaLAB_4: 1192795360
+      CodistopiaLAB_29: -1365712434
+      CodistopiaLAB_21: 1181521832
+      CodistopiaLAB_15: -1768498067
+      CodistopiaLAB_19: -1235626546
+      CodistopiaLAB_1: -1717126056
+      CodistopiaLAB_23: -83312783
+      CodistopiaLAB_3: 1085312044
+      CodistopiaLAB_22: -168806224
+      CodistopiaLAB_5: 660525976
   spritePackingTag: 
   pSDRemoveMatte: 0
   userData: 
