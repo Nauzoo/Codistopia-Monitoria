@@ -15,12 +15,13 @@ public class COMPARER : MonoBehaviour
         Instance = this;
     }
 
-    public static class POSITION
+    private string specialChars = "(){},;\n0123456789=";
+    public class POSITION
     {
-        public static int Line { get; set; }
-        public static int Char { get; set; }
+        public int Line { get; set; }
+        public int Char { get; set; }
         
-        public static List<string> GetPosition()
+        public List<string> GetPosition()
         {
             List<string> postion = new List<string>();
             postion.Add(Line.ToString());
@@ -31,6 +32,7 @@ public class COMPARER : MonoBehaviour
     }
     private void Start()
     {
+        
         if (CurrentCode.textArray != null)
         {
             formatedTempCodes = new string[CurrentCode.textArray.Length];
@@ -41,83 +43,181 @@ public class COMPARER : MonoBehaviour
         }
         else {
             Debug.LogWarning("Inicialized without Temp. Code!");
-        }                
-        
+        }        
+
     }
     private string formatCode(string text)
     {
-        string myCode = text;
+        string myCode = text + ' ';
         string formatedCode = "";
                 
 
         bool openString = false;
+        bool openComment = false;
+
+        string term_holder = "";
         foreach (char letter in myCode)
         {
             if (letter != ' ')
             {
-                if (letter.ToString() == "'" && !openString)
+                if (letter.ToString() == "'" && !openString && !openComment)
                 {
                     openString = true;
                 }
                 else if (letter.ToString() == "'" && openString)
                 {
                     openString = false;
-                    formatedCode += ":string:";
+                    formatedCode += ":string: ";
                     continue;
                 }
                 if (openString)
                 {
                     continue;
                 }
+                
                 else
                 {
-                    if(letter == '\n' || letter == '\t')
+                    if (letter == '#' && !openComment)
+                    {
+                        openComment = true;
+                    }
+                    else if (letter == '\n' && openComment)
+                    {
+                        openComment = false;
+                    }
+                    
+                    if (openComment)
                     {
                         continue;
                     }
+                    
+                    if (specialChars.Contains(letter) && formatedCode.Length > 0) {
+                        formatedCode += term_holder;
+                        term_holder = "";                        
+                        if (formatedCode[formatedCode.Length-1] == ' ')
+                        {
+                            formatedCode += letter + " ";
+                        }
+                        else
+                        {
+                            formatedCode += " " + letter + " ";
+                        }
+                        
+                    }
                     else
                     {
-                        formatedCode += letter;
+                        term_holder += letter;
                     }
                 }
-            }            
+            }
+            else
+            {
+                if (term_holder != "")
+                {
+                    formatedCode += term_holder + ' ';
+                    term_holder = "";
+                }
+            }
         }
         Debug.Log(formatedCode);
-        return formatedCode;
+        return formatedCode.Trim();
+    }
+    public string tokenizeCode(string code)
+    {
+        string tokenizedCode = "";
+        string[] codeParts = code.Split(' ');
+
+        foreach (string fragment in codeParts)
+        {            
+            if (fragment == "var")
+            {
+                tokenizedCode += "VAR_D";                
+            }
+            else if (fragment == "for")
+            {
+                tokenizedCode += "FOR_LP";
+            }
+            else if (fragment == "vicky.move")
+            {
+                tokenizedCode += "MOV";
+            }
+            else if (fragment == "if")
+            {
+                tokenizedCode += "IF_ST";
+            }
+            else if (fragment == "import")
+            {
+                tokenizedCode += "IMP";
+            }            
+            else if (fragment == ",")
+            {
+                tokenizedCode += "CO";
+            }
+            else if (fragment == "(")
+            {
+                tokenizedCode += "L_PAR";
+            }
+            else if (fragment == ")")
+            {
+                tokenizedCode += "R_PAR";
+            }
+            else if (fragment == ";")
+            {
+                tokenizedCode += "PCO";
+            }
+            else if (fragment == "=")
+            {
+                tokenizedCode += "EQ";
+            }
+            else if (fragment == "{")
+            {
+                tokenizedCode += "L_K";
+            }
+            else if (fragment == "}")
+            {
+                tokenizedCode += "R_K";
+            }
+            else if (fragment == "\n")
+            {
+                tokenizedCode += "BRK";
+            }
+            else
+            {
+                if (fragment.Length > 1 || specialChars.Contains(fragment))
+                {
+                    tokenizedCode += "VALUE->" + fragment;
+                }
+                else
+                {
+                    tokenizedCode += "VALUE->unknowChar" ;
+                }
+                
+            }
+            tokenizedCode += ' ';
+        }
+        tokenizedCode = tokenizedCode.Trim();
+        Debug.Log(tokenizedCode);
+        return tokenizedCode;
     }
     public void RUN_COMPARASSION(string code)
     {
         
         string formatedTypCode = formatCode(code);
+        string tokCode = tokenizeCode(formatedTypCode);
+        
+        POSITION pos = new POSITION();
 
         foreach (string formatedTempCode in formatedTempCodes)
         {
-            int typeIncreaser = 0;
-            int tempIncreaser = 0;
+            pos.Line = 0;
+            pos.Char = 0;
+
+            
             hasErros = false;
 
             for (int i = 0; i < formatedTempCode.Length; i++)
-            {
-                if (!hasErros)
-                {
-                    continue;
-                }
-
-                if (formatedTempCode[i] == '\n' || formatedTempCode[i] == '\t')
-                {
-                    tempIncreaser++;
-                }
-
-                if (formatedTypCode[i] == '\n' || formatedTempCode[i] == '\t')
-                {
-                    if (formatedTypCode[i + tempIncreaser] == '\n')
-                    {
-                        POSITION.Line += 1;
-                    }
-                    typeIncreaser++;
-                }
-
-                if (formatedTempCode[i + tempIncreaser] == formatedTypCode[i + typeIncreaser])
+            {                
+                if (formatedTempCode[i] == formatedTypCode[i])
                 {
                     continue;
                 }
@@ -126,13 +226,12 @@ public class COMPARER : MonoBehaviour
                     hasErros = true;
                     Debug.Log(formatedTempCode[i]);
                     Debug.Log(formatedTypCode[i]);
-                    Debug.Log($"line: {POSITION.GetPosition()[0]}, char: {POSITION.GetPosition()[1]}");
                     break;
                 }
             }
             if (!hasErros)
             {
-                continue;
+                break;
             }
         }
         IdeEvent.showCompResult(hasErros);

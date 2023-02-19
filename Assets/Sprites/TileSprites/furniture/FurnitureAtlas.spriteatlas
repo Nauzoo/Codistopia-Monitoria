@@ -39,6 +39,12 @@ SpriteAtlas:
   m_MasterAtlas: {fileID: 0}
   m_PackedSprites:
   - {fileID: 21300000, guid: c8454d90bd2da3346b572a3a2fb34015, type: 3}
+  - {fileID: 685707783, guid: 61104ec05827d094fa82a5e23f1375aa, type: 3}
+  - {fileID: 488592262, guid: 61104ec05827d094fa82a5e23f1375aa, type: 3}
+  - {fileID: -660963099, guid: 61104ec05827d094fa82a5e23f1375aa, type: 3}
+  - {fileID: 2040377497, guid: 61104ec05827d094fa82a5e23f1375aa, type: 3}
+  - {fileID: -755153431, guid: 61104ec05827d094fa82a5e23f1375aa, type: 3}
+  - {fileID: -735032925, guid: 61104ec05827d094fa82a5e23f1375aa, type: 3}
   - {fileID: 374376626, guid: 75596c72d194fcd49b730c77e3fe42f0, type: 3}
   - {fileID: 659881830, guid: 75596c72d194fcd49b730c77e3fe42f0, type: 3}
   - {fileID: 1575297849, guid: 75596c72d194fcd49b730c77e3fe42f0, type: 3}
@@ -103,6 +109,17 @@ SpriteAtlas:
   - {fileID: 21300000, guid: a9b8223bec2c6f744a6d965e31db8adb, type: 3}
   - {fileID: 21300000, guid: e9ddc7bb3040f5745958fd31d6e828b2, type: 3}
   - {fileID: 21300000, guid: de5502dbc4ff3b54591e76df386d27db, type: 3}
+  - {fileID: -256967654, guid: f858e34ccaadd1b438371e69c09361f5, type: 3}
+  - {fileID: 1341989891, guid: f858e34ccaadd1b438371e69c09361f5, type: 3}
+  - {fileID: 943920244, guid: f858e34ccaadd1b438371e69c09361f5, type: 3}
+  - {fileID: -1571594056, guid: f858e34ccaadd1b438371e69c09361f5, type: 3}
+  - {fileID: 1470108760, guid: f858e34ccaadd1b438371e69c09361f5, type: 3}
+  - {fileID: -618745433, guid: f858e34ccaadd1b438371e69c09361f5, type: 3}
+  - {fileID: 1404958849, guid: f858e34ccaadd1b438371e69c09361f5, type: 3}
+  - {fileID: 1818756126, guid: f858e34ccaadd1b438371e69c09361f5, type: 3}
+  - {fileID: 1897332119, guid: f858e34ccaadd1b438371e69c09361f5, type: 3}
+  - {fileID: 216993284, guid: f858e34ccaadd1b438371e69c09361f5, type: 3}
+  - {fileID: 395342141, guid: f858e34ccaadd1b438371e69c09361f5, type: 3}
   - {fileID: 21300000, guid: be61724d647035743979303e25cd9acf, type: 3}
   - {fileID: 529982499, guid: 23cf81feecfa1a940a2cb154f26ca8fe, type: 3}
   - {fileID: -1595171793, guid: 23cf81feecfa1a940a2cb154f26ca8fe, type: 3}
@@ -324,6 +341,12 @@ SpriteAtlas:
   - {fileID: -1412015572, guid: 400dd4cff679d9844aea869e4290ae68, type: 3}
   m_PackedSpriteNamesToIndex:
   - paper
+  - table_CodistopiaLAB_1
+  - table_CodistopiaLAB_0
+  - table_CodistopiaLAB_5
+  - table_CodistopiaLAB_4
+  - table_CodistopiaLAB_3
+  - table_CodistopiaLAB_2
   - Cashier 1_6
   - Cashier 1_7
   - Cashier 1_4
@@ -388,6 +411,17 @@ SpriteAtlas:
   - Torradeira_RGB1
   - Torradeira_RGB7
   - Torradeira_RGB8
+  - Prateleiras da Vick_10
+  - Prateleiras da Vick_8
+  - Prateleiras da Vick_9
+  - Prateleiras da Vick_4
+  - Prateleiras da Vick_5
+  - Prateleiras da Vick_6
+  - Prateleiras da Vick_7
+  - Prateleiras da Vick_0
+  - Prateleiras da Vick_1
+  - Prateleiras da Vick_2
+  - Prateleiras da Vick_3
   - Torradeira_RGB10
   - Cashier_10
   - Cashier_11
