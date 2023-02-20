@@ -15,7 +15,12 @@ public class COMPARER : MonoBehaviour
         Instance = this;
     }
 
-    private string specialChars = "(){},;\n0123456789=";
+    private string specialChars = "(){},;\n/|+-*%=[]^~<>@$¨?!";
+
+    private List<string> systemVariables;
+    private List<string> avaybleLibraries = new List<string> { "vicky" };    
+    private List<string> importedLibraries = new List<string>();
+
     public class POSITION
     {
         public int Line { get; set; }
@@ -32,6 +37,7 @@ public class COMPARER : MonoBehaviour
     }
     private void Start()
     {
+        systemVariables = new List<string>();
         
         if (CurrentCode.textArray != null)
         {
@@ -126,9 +132,11 @@ public class COMPARER : MonoBehaviour
     {
         string tokenizedCode = "";
         string[] codeParts = code.Split(' ');
+        codeParts[codeParts.Length-1] = "//";
 
         foreach (string fragment in codeParts)
-        {            
+        {
+            Debug.Log(fragment);
             if (fragment == "var")
             {
                 tokenizedCode += "VAR_D";                
@@ -137,10 +145,10 @@ public class COMPARER : MonoBehaviour
             {
                 tokenizedCode += "FOR_LP";
             }
-            else if (fragment == "vicky.move")
+            /*else if (fragment == "vicky.move")
             {
                 tokenizedCode += "MOV";
-            }
+            }*/
             else if (fragment == "if")
             {
                 tokenizedCode += "IF_ST";
@@ -181,23 +189,132 @@ public class COMPARER : MonoBehaviour
             {
                 tokenizedCode += "BRK";
             }
+            else if (fragment == "//")
+            {
+                tokenizedCode += "endprogram";
+            }
             else
             {
-                if (fragment.Length > 1 || specialChars.Contains(fragment))
-                {
-                    tokenizedCode += "VALUE->" + fragment;
-                }
-                else
-                {
-                    tokenizedCode += "VALUE->unknowChar" ;
-                }
-                
+                tokenizedCode += "VALUE->" + fragment;
+
             }
             tokenizedCode += ' ';
         }
         tokenizedCode = tokenizedCode.Trim();
         Debug.Log(tokenizedCode);
         return tokenizedCode;
+    }
+    public void generateAST(string tokenList)
+    {
+        string[] tokenStack = tokenList.Split(' ');
+        string AST = "";
+
+        List<string> keyTokens = new List<string>{ "IMP", "VAR_D", "NAMED_VAR", "ATR_VAR", "IF_ST", "FOR_LP", "MOV", "FUNC" };
+        List<string> avaibleFunctions = new List<string> { "IF_ST", "FOR_LP", "MOV" };
+
+        string placeHolder = "";        
+
+        for (int i = 0; i < tokenStack.Length; i++)
+        {
+            string token = tokenStack[i]; 
+
+            if (placeHolder != "")
+            {
+                if (placeHolder == "IMP")
+                {
+                    if (token.Contains("VALUE"))
+                    {
+                        string lib = token.Split("->")[1];
+                        if (avaybleLibraries.Contains(lib))
+                        {
+                            importedLibraries.Add(lib);                            
+                        }
+                        else
+                        {
+                            // add import error later
+                            break;
+                        }
+                    }
+                }
+
+                else if (placeHolder == "VAR_D")
+                {
+                    if (token.Contains("VALUE"))
+                    {
+                        string name = token.Split("->")[1];
+                        if (!specialChars.Contains(name) && name != ":string:" && !keyTokens.Contains(name))
+                        {
+                            placeHolder = "NAMED_VAR:" + name;
+                        }
+                        else
+                        {
+                            // add var name error later
+                        }
+                    }
+                    else
+                    {
+                        // add error later
+                    }
+                }
+                else if (placeHolder.Contains("NAMED_VAR"))
+                {
+                    if (token == "EQ")
+                    {
+                        placeHolder = "ATR_VAR:" + placeHolder.Split(':')[1];   
+                    }
+                    else
+                    {
+                        // add var atribuition error later
+                    }
+                }
+                else if (placeHolder.Contains("ATR_VAR"))
+                {
+                    if (token.Contains("VALUE"))
+                    {
+                        string value = token.Split("->")[1];
+                        if (!specialChars.Contains(value) && !keyTokens.Contains(value))
+                        {
+                            systemVariables.Add($"{placeHolder.Split(':')[1]}:{value}");
+                        }
+                        else
+                        {
+                            // add var atribuition error later
+                        }
+                    }
+                    else
+                    {
+                        // add var atribuition error later;
+                    }
+                }
+
+                else if (placeHolder.Contains("VALUE"))
+                {
+                    if (token == "L_PAR")
+                    {
+                        placeHolder = "FUNC:" + token.Split("->")[1];
+                    }
+                }
+
+                else if (placeHolder.Contains("FUNC"))
+                {
+                    
+                }
+            }
+            else
+            {
+                if (token == "PCO")
+                {
+                    placeHolder = "";
+                }
+
+                else if (keyTokens.Contains(token) || keyTokens.Contains("VALUE"))
+                {
+                    placeHolder = token;
+                    continue;
+                }
+                
+            }
+        }
     }
     public void RUN_COMPARASSION(string code)
     {
