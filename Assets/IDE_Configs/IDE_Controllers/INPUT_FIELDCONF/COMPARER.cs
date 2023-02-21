@@ -15,30 +15,66 @@ public class COMPARER : MonoBehaviour
         Instance = this;
     }
 
-    private string specialChars = "(){},;\n/|+-*%=[]^~<>@$¨?!";
+    private string specialChars = "(){},;\n/|+-*%=[]^~<>@$?!";
 
     private List<string> systemVariables;
-    private List<string> avaybleLibraries = new List<string> { "vicky" };    
+    private List<string> avaybleLibraries = new List<string> { "vicky" };
+    private List<string> librariesCommands = new List<string> { "vicky.move:2:int,string" };
     private List<string> importedLibraries = new List<string>();
 
     public class POSITION
     {
-        public int Line { get; set; }
-        public int Char { get; set; }
+        public static int Line { get; set; }
+        public static int Term { get; set; }
         
-        public List<string> GetPosition()
+        public static List<string> GetPosition()
         {
             List<string> postion = new List<string>();
             postion.Add(Line.ToString());
-            postion.Add(Char.ToString());
+            postion.Add(Term.ToString());
 
             return postion;
         }
     }
+    public class ERROR { 
+        public static void syntaxError(List<string> pos, string exp)
+        {
+            Debug.LogError("!Syntax Error: " + exp + " Linha: " + pos[0] + ", Termo: " + pos[1]);
+        }
+        public static void unnexpectedChar(List<string> pos, string exp)
+        {
+            Debug.LogError("!Unnexpected Char: " + exp + " Linha: " + pos[0] + ", Termo: " + pos[1]);
+        }
+        public static void importError(List<string> pos, string exp)
+        {
+            Debug.LogError("!import Error: " + exp + " Linha: " + pos[0] + ", Termo: " + pos[1]);
+        }
+        public static void unnexpectedValue(List<string> pos, string exp)
+        {
+            Debug.LogError("!Unnexpected Value: " + exp + " Linha: " + pos[0] + ", Termo: " + pos[1]);
+        }
+        public static void nameError(List<string> pos, string exp)
+        {
+            Debug.LogError("!Name Error: " + exp + " Linha: " + pos[0] + ", Termo: " + pos[1]);
+        }
+        public static void parameterOverflow(List<string> pos, string exp)
+        {
+            Debug.LogError("Parameter Overflow: " + exp + " Linha: " + pos[0] + ", Termo: " + pos[1]);
+        }
+        public static void unsuficientParameters(List<string> pos, string exp)
+        {
+            Debug.LogError("!Unsuficient Parameters: " + exp + " Linha: " + pos[0] + ", Termo: " + pos[1]);
+        }
+        public static void undefinedExpression(List<string> pos, string exp)
+        {
+            Debug.LogError("!Undefined Expression: " + exp + " Linha: " + pos[0] + ", Termo: " + pos[1]);
+        }
+    }
+
     private void Start()
     {
-        systemVariables = new List<string>();
-        
+        systemVariables = new List<string>();        
+
         if (CurrentCode.textArray != null)
         {
             formatedTempCodes = new string[CurrentCode.textArray.Length];
@@ -73,7 +109,7 @@ public class COMPARER : MonoBehaviour
                 else if (letter.ToString() == "'" && openString)
                 {
                     openString = false;
-                    formatedCode += ":string: ";
+                    formatedCode += "string:";
                     continue;
                 }
                 if (openString)
@@ -131,8 +167,7 @@ public class COMPARER : MonoBehaviour
     public string tokenizeCode(string code)
     {
         string tokenizedCode = "";
-        string[] codeParts = code.Split(' ');
-        codeParts[codeParts.Length-1] = "//";
+        string[] codeParts = code.Split(' ');        
 
         foreach (string fragment in codeParts)
         {
@@ -140,19 +175,7 @@ public class COMPARER : MonoBehaviour
             if (fragment == "var")
             {
                 tokenizedCode += "VAR_D";                
-            }
-            else if (fragment == "for")
-            {
-                tokenizedCode += "FOR_LP";
-            }
-            /*else if (fragment == "vicky.move")
-            {
-                tokenizedCode += "MOV";
-            }*/
-            else if (fragment == "if")
-            {
-                tokenizedCode += "IF_ST";
-            }
+            }            
             else if (fragment == "import")
             {
                 tokenizedCode += "IMP";
@@ -168,11 +191,7 @@ public class COMPARER : MonoBehaviour
             else if (fragment == ")")
             {
                 tokenizedCode += "R_PAR";
-            }
-            else if (fragment == ";")
-            {
-                tokenizedCode += "PCO";
-            }
+            }            
             else if (fragment == "=")
             {
                 tokenizedCode += "EQ";
@@ -189,13 +208,23 @@ public class COMPARER : MonoBehaviour
             {
                 tokenizedCode += "BRK";
             }
-            else if (fragment == "//")
+            else if (specialChars.Contains(fragment))
             {
-                tokenizedCode += "endprogram";
+                tokenizedCode += fragment;
             }
             else
             {
-                tokenizedCode += "VALUE->" + fragment;
+                string token = "VALUE->";
+                if (int.TryParse(fragment, out int n))
+                {
+                    token += "int:";
+                }
+                else if (fragment == "true" || fragment == "false")
+                {
+                    token += "bool:";
+                }                
+                token += fragment;
+                tokenizedCode += token;
 
             }
             tokenizedCode += ' ';
@@ -206,17 +235,20 @@ public class COMPARER : MonoBehaviour
     }
     public void generateAST(string tokenList)
     {
+        POSITION.Line = 1;
+        POSITION.Term = 1;
+
         string[] tokenStack = tokenList.Split(' ');
         string AST = "";
 
-        List<string> keyTokens = new List<string>{ "IMP", "VAR_D", "NAMED_VAR", "ATR_VAR", "IF_ST", "FOR_LP", "MOV", "FUNC" };
-        List<string> avaibleFunctions = new List<string> { "IF_ST", "FOR_LP", "MOV" };
+        List<string> keyTokens = new List<string>{ "IMP", "VAR_D", "NAMED_VAR", "ATR_VAR", "FUNC" };
+        List<string> avaibleFunctions = new List<string> { "if:1:bool", "for_interval:2:int,int" };
 
         string placeHolder = "";        
 
         for (int i = 0; i < tokenStack.Length; i++)
         {
-            string token = tokenStack[i]; 
+            string token = tokenStack[i];            
 
             if (placeHolder != "")
             {
@@ -227,11 +259,20 @@ public class COMPARER : MonoBehaviour
                         string lib = token.Split("->")[1];
                         if (avaybleLibraries.Contains(lib))
                         {
-                            importedLibraries.Add(lib);                            
+                            importedLibraries.Add(lib);
+                            foreach (string command in librariesCommands)
+                            {
+                                if (command.Contains(lib))
+                                {
+                                    avaibleFunctions.Add(command);
+                                    placeHolder = "";
+                                }
+                            }
+
                         }
                         else
                         {
-                            // add import error later
+                            ERROR.importError(POSITION.GetPosition(), $"biblioteca {lib} nao existe nos arquivos. Voce digitou o nome corretamente?");
                             break;
                         }
                     }
@@ -242,87 +283,120 @@ public class COMPARER : MonoBehaviour
                     if (token.Contains("VALUE"))
                     {
                         string name = token.Split("->")[1];
-                        if (!specialChars.Contains(name) && name != ":string:" && !keyTokens.Contains(name))
+                        if (!specialChars.Contains(name) && name != "string:" && !keyTokens.Contains(name))
                         {
                             placeHolder = "NAMED_VAR:" + name;
                         }
                         else
                         {
-                            // add var name error later
+                            ERROR.nameError(POSITION.GetPosition(), "nao utilize tipos primitivos e carateres especiais para nomear variaveis!");
+                            break;
                         }
                     }
                     else
                     {
-                        // add error later
+                        ERROR.unnexpectedChar(POSITION.GetPosition(), "adicione um nome para a variavel, que nao seja uma palavra ou caracter reservado a linguagem!");
+                        break;
                     }
                 }
                 else if (placeHolder.Contains("NAMED_VAR"))
                 {
                     if (token == "EQ")
                     {
-                        placeHolder = "ATR_VAR:" + placeHolder.Split(':')[1];   
+                        placeHolder = "ATR_VAR:" + placeHolder.Split(':')[1];
                     }
                     else
                     {
-                        // add var atribuition error later
+                        ERROR.unnexpectedChar(POSITION.GetPosition(), "esperado '=', para atribuicao de valor.");
+                        break;
                     }
                 }
                 else if (placeHolder.Contains("ATR_VAR"))
                 {
-                    if (token.Contains("VALUE"))
+                    if (token.Contains("VALUE") && (token.Contains("string") || token.Contains("int") || token.Contains("bool")))
                     {
                         string value = token.Split("->")[1];
                         if (!specialChars.Contains(value) && !keyTokens.Contains(value))
                         {
                             systemVariables.Add($"{placeHolder.Split(':')[1]}:{value}");
+                            placeHolder = "";
                         }
                         else
                         {
-                            // add var atribuition error later
+                            ERROR.unnexpectedValue(POSITION.GetPosition(), $"'{token}', nao e valido no contexto fornecido.");
+                            break;
                         }
                     }
                     else
                     {
-                        // add var atribuition error later;
+                        ERROR.unnexpectedValue(POSITION.GetPosition(), $"'{token}', nao e valido no contexto fornecido.");
+                        break;
                     }
                 }
 
                 else if (placeHolder.Contains("VALUE"))
-                {
+                {                    
                     if (token == "L_PAR")
                     {
-                        placeHolder = "FUNC:" + token.Split("->")[1];
+                        placeHolder = "FUNC:" + placeHolder.Split("->")[1];
+                    }
+                    else
+                    {
+                        ERROR.undefinedExpression(POSITION.GetPosition(), $"termo desconhecido '{token}'. Voce se esqueceu de importar alguma biblioteca?");
+                        break;
                     }
                 }
 
                 else if (placeHolder.Contains("FUNC"))
                 {
                     
-                }
+                }               
+                
             }
             else
             {
-                if (token == "PCO")
+                if (keyTokens.Contains(token) || token.Contains("VALUE"))
                 {
-                    placeHolder = "";
+                    placeHolder = token;                    
                 }
-
-                else if (keyTokens.Contains(token) || keyTokens.Contains("VALUE"))
+                else if (token == "BRK" || token == "endprogram")
                 {
-                    placeHolder = token;
-                    continue;
+                    POSITION.Line++;
+                    POSITION.Term = 1;
+                }
+                else
+                {
+                    ERROR.unnexpectedChar(POSITION.GetPosition(), $"caracter inesperado {token}.");
+                    break;
                 }
                 
             }
+            POSITION.Term++;
         }
+
+        Debug.Log(AST);
+        foreach (string item in avaibleFunctions)
+        {
+            Debug.Log(item);
+        }
+        foreach (string item in importedLibraries)
+        {
+            Debug.Log(item);
+        }
+        foreach (string item in systemVariables)
+        {
+            Debug.Log(item);
+        }
+        
     }
     public void RUN_COMPARASSION(string code)
     {
-        
+        systemVariables = new List<string>();
         string formatedTypCode = formatCode(code);
         string tokCode = tokenizeCode(formatedTypCode);
-        
-        POSITION pos = new POSITION();
+        generateAST(tokCode);
+
+        /*POSITION pos = new POSITION();
 
         foreach (string formatedTempCode in formatedTempCodes)
         {
@@ -351,7 +425,7 @@ public class COMPARER : MonoBehaviour
                 break;
             }
         }
-        IdeEvent.showCompResult(hasErros);
+        IdeEvent.showCompResult(hasErros);*/
         
     }
 }
