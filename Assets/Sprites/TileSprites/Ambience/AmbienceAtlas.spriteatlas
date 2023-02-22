@@ -82,6 +82,12 @@ SpriteAtlas:
   - {fileID: 462509786, guid: fcae87c10ac2314448276c8d699a8071, type: 3}
   - {fileID: 782639314, guid: fcae87c10ac2314448276c8d699a8071, type: 3}
   - {fileID: 21300000, guid: 023fbd92ade33bb4fa5b6c5974c194f7, type: 3}
+  - {fileID: 1582574328, guid: d22149b2102e05a489cdcd9010ff424a, type: 3}
+  - {fileID: 1059926337, guid: d22149b2102e05a489cdcd9010ff424a, type: 3}
+  - {fileID: 480760092, guid: d22149b2102e05a489cdcd9010ff424a, type: 3}
+  - {fileID: 1091980402, guid: d22149b2102e05a489cdcd9010ff424a, type: 3}
+  - {fileID: 417412583, guid: d22149b2102e05a489cdcd9010ff424a, type: 3}
+  - {fileID: 1068736914, guid: d22149b2102e05a489cdcd9010ff424a, type: 3}
   - {fileID: -545023110, guid: bf6a1ce2ab8b6ad46b2f885dfa3987b7, type: 3}
   - {fileID: 1227217279, guid: bf6a1ce2ab8b6ad46b2f885dfa3987b7, type: 3}
   - {fileID: -1546744638, guid: bf6a1ce2ab8b6ad46b2f885dfa3987b7, type: 3}
@@ -199,6 +205,12 @@ SpriteAtlas:
   - {fileID: 21300000, guid: b0fa6b6a10d5b724f846924e7ae56a84, type: 3}
   - {fileID: 21300000, guid: 2c1552da9ec794740a768c66ac0418b2, type: 3}
   - {fileID: 21300000, guid: f0ec42cba9d0ed54b923b01a984a76ee, type: 3}
+  - {fileID: -820078337, guid: f1197d3c00d25554aae132ea290893dd, type: 3}
+  - {fileID: 191271366, guid: f1197d3c00d25554aae132ea290893dd, type: 3}
+  - {fileID: 983253590, guid: f1197d3c00d25554aae132ea290893dd, type: 3}
+  - {fileID: 1869300666, guid: f1197d3c00d25554aae132ea290893dd, type: 3}
+  - {fileID: 693758104, guid: f1197d3c00d25554aae132ea290893dd, type: 3}
+  - {fileID: 181776202, guid: f1197d3c00d25554aae132ea290893dd, type: 3}
   - {fileID: 6631783, guid: 43e999ccbde338947870aa430f5f14a1, type: 3}
   - {fileID: 137434809, guid: 43e999ccbde338947870aa430f5f14a1, type: 3}
   - {fileID: 156861453, guid: 7d544d0d8a2e49842b403d74592d8dc6, type: 3}
@@ -212,6 +224,18 @@ SpriteAtlas:
   - {fileID: -1602505185, guid: 58a8986d8e34d8646906664d1876dc9b, type: 3}
   - {fileID: -97774987, guid: 58a8986d8e34d8646906664d1876dc9b, type: 3}
   - {fileID: 21300000, guid: b7974c1e67b128f4395b93ce3dac3105, type: 3}
+  - {fileID: 493391626, guid: 6f8b704e69690104fb465a5706fb86b4, type: 3}
+  - {fileID: 550629348, guid: 6f8b704e69690104fb465a5706fb86b4, type: 3}
+  - {fileID: -1385156726, guid: 6f8b704e69690104fb465a5706fb86b4, type: 3}
+  - {fileID: -1669405356, guid: 6f8b704e69690104fb465a5706fb86b4, type: 3}
+  - {fileID: 577216713, guid: 6f8b704e69690104fb465a5706fb86b4, type: 3}
+  - {fileID: 2045217009, guid: 6f8b704e69690104fb465a5706fb86b4, type: 3}
+  - {fileID: -1904922478, guid: 1f72f4affaf2b224d8caf0109d7f1662, type: 3}
+  - {fileID: 1564668861, guid: 1f72f4affaf2b224d8caf0109d7f1662, type: 3}
+  - {fileID: -225227950, guid: 1f72f4affaf2b224d8caf0109d7f1662, type: 3}
+  - {fileID: 722390365, guid: 1f72f4affaf2b224d8caf0109d7f1662, type: 3}
+  - {fileID: -286979595, guid: 1f72f4affaf2b224d8caf0109d7f1662, type: 3}
+  - {fileID: 553619331, guid: 1f72f4affaf2b224d8caf0109d7f1662, type: 3}
   m_PackedSpriteNamesToIndex:
   - Outdoor_FrogShop_18
   - Outdoor_FrogShop_12
@@ -245,6 +269,12 @@ SpriteAtlas:
   - BlueFlower_1
   - BlueFlower_0
   - Fountain9
+  - SolaP_R_4
+  - SolaP_R_5
+  - SolaP_R_2
+  - SolaP_R_3
+  - SolaP_R_0
+  - SolaP_R_1
   - FountainSliced_0
   - FountainSliced_1
   - FountainSliced_2
@@ -362,6 +392,12 @@ SpriteAtlas:
   - Fountain1
   - Fountain5
   - Fountain6
+  - SolarBat_2
+  - SolarBat_3
+  - SolarBat_0
+  - SolarBat_1
+  - SolarBat_4
+  - SolarBat_5
   - SunFlower_1
   - SunFlower_0
   - BonsaiTree_0
@@ -375,6 +411,18 @@ SpriteAtlas:
   - HighTree_0
   - HighTree_1
   - Fountain2
+  - SolaP_L_4
+  - SolaP_L_5
+  - SolaP_L_0
+  - SolaP_L_1
+  - SolaP_L_2
+  - SolaP_L_3
+  - SolaP_M_5
+  - SolaP_M_4
+  - SolaP_M_1
+  - SolaP_M_0
+  - SolaP_M_3
+  - SolaP_M_2
   m_RenderDataMap: {}
   m_Tag: AmbienceAtlas
   m_IsVariant: 0
