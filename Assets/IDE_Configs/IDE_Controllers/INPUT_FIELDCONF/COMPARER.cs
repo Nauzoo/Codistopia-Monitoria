@@ -69,6 +69,10 @@ public class COMPARER : MonoBehaviour
         {
             Debug.LogError("!Undefined Expression: " + exp + " Linha: " + pos[0] + ", Termo: " + pos[1]);
         }
+        public static void undefinedValue(List<string> pos, string exp)
+        {
+            Debug.LogError("!Undefined Value: " + exp + " Linha: " + pos[0] + ", Termo: " + pos[1]);
+        }
     }
 
     private void Start()
@@ -97,6 +101,8 @@ public class COMPARER : MonoBehaviour
         bool openString = false;
         bool openComment = false;
 
+        string strHolder = "";
+
         string term_holder = "";
         foreach (char letter in myCode)
         {
@@ -105,15 +111,20 @@ public class COMPARER : MonoBehaviour
                 if (letter.ToString() == "'" && !openString && !openComment)
                 {
                     openString = true;
+                    strHolder += letter;
+                    continue;
                 }
                 else if (letter.ToString() == "'" && openString)
                 {
                     openString = false;
-                    formatedCode += "string:";
+                    strHolder += letter;
+                    formatedCode += strHolder;
+                    strHolder = "";
                     continue;
                 }
                 if (openString)
                 {
+                    strHolder += letter;
                     continue;
                 }
                 
@@ -122,10 +133,12 @@ public class COMPARER : MonoBehaviour
                     if (letter == '#' && !openComment)
                     {
                         openComment = true;
+                        continue;
                     }
                     else if (letter == '\n' && openComment)
-                    {
-                        openComment = false;
+                    {                        
+                        openComment = false;                    
+                        
                     }
                     
                     if (openComment)
@@ -133,10 +146,10 @@ public class COMPARER : MonoBehaviour
                         continue;
                     }
                     
-                    if (specialChars.Contains(letter) && formatedCode.Length > 0) {
+                    if (specialChars.Contains(letter)) {
                         formatedCode += term_holder;
                         term_holder = "";                        
-                        if (formatedCode[formatedCode.Length-1] == ' ')
+                        if (formatedCode.Length > 0 && formatedCode[formatedCode.Length-1] == ' ')
                         {
                             formatedCode += letter + " ";
                         }
@@ -159,80 +172,226 @@ public class COMPARER : MonoBehaviour
                     formatedCode += term_holder + ' ';
                     term_holder = "";
                 }
-            }
+                if (openString)
+                {
+                    strHolder += "|spa|";
+                }
+            }            
         }
         Debug.Log(formatedCode);
-        return formatedCode.Trim();
+        return formatedCode + "/end";
+            //.Trim((char)8203);
+    }
+    public List<string> Addterms(List<string> exp)
+    {
+        List<string> newExp = new List<string>();
+        for (int i = 0; i < exp.Count; i++)
+        {
+            string n = exp[i];
+            if (n == "+")
+            {
+                if (newExp.Count > 0 && i < exp.Count - 1)
+                {
+                    newExp[newExp.Count - 1] = $"ADD:{newExp[newExp.Count - 1]},{exp[i + 1]}";
+                    i++;
+                    continue;
+                }
+                else
+                {
+                    newExp[newExp.Count - 1] = $"ADD:null,null";
+                }
+            }
+            else if (n == "-")
+            {
+                if (newExp.Count > 0 && i < exp.Count - 1)
+                {
+                    newExp[newExp.Count - 1] = $"SUB:{newExp[newExp.Count - 1]},{exp[i + 1]}";
+                    i++;
+                    continue;
+                }
+                else
+                {
+                    newExp[newExp.Count - 1] = $"SYUB:null,null";
+                }
+            }
+            else
+            {
+                newExp.Add(n);
+            }
+        }
+        return newExp;
+    }
+    public List<string> MutTerms(List<string> exp)
+    {
+        List<string> newExp = new List<string>();
+        for (int i = 0; i < exp.Count; i ++)
+        {
+            string n = exp[i];
+            if (n == "*")
+            {
+                if (newExp.Count > 0 && i < exp.Count - 1)
+                {
+                    newExp[newExp.Count - 1] = $"MUL:{newExp[newExp.Count - 1]},{exp[i + 1]}";
+                    i++;
+                    continue;
+                }
+                else
+                {
+                    newExp[newExp.Count - 1] = $"MUL:null,null";
+                }
+            }
+            else if (n == "/")
+            {
+                if (newExp.Count > 0 && i < exp.Count - 1)
+                {
+                    newExp[newExp.Count - 1] = $"DIV:{newExp[newExp.Count - 1]},{exp[i + 1]}";
+                    i++;
+                    continue;
+                }
+                else
+                {
+                    newExp[newExp.Count - 1] = $"DIV:null,null";
+                }
+            }
+            else
+            {
+                newExp.Add(n);
+            }
+        }
+
+        return newExp;
+    }
+    public string createNumberExp(List<string> exp)
+    {
+        string express = "";
+        foreach (string op in Addterms(MutTerms(exp)))
+        {
+            express += op;
+        }
+        return express;
     }
     public string tokenizeCode(string code)
     {
         string tokenizedCode = "";
-        string[] codeParts = code.Split(' ');        
+        string[] codeParts = code.Split(' ');
+        List<string> operators = new List<string>(){ "+", "-", "*", "/" };
 
+        bool holdingExp = false;
+        bool holdingLogic = false;
+
+        List<string> expression = new List<string>();
         foreach (string fragment in codeParts)
         {
-            Debug.Log(fragment);
-            if (fragment == "var")
+            if (holdingExp)
             {
-                tokenizedCode += "VAR_D";                
-            }            
-            else if (fragment == "import")
-            {
-                tokenizedCode += "IMP";
-            }            
-            else if (fragment == ",")
-            {
-                tokenizedCode += "CO";
+                if (int.TryParse(fragment, out int n))
+                {
+                    expression.Add($"INT:{fragment}");
+                }
+                else if (operators.Contains(fragment))
+                {
+                    expression.Add(fragment);
+                }
+                else
+                {
+                    holdingExp = false;
+                    foreach(string element in expression)
+                    {
+                        Debug.Log(element);
+                    }
+                    tokenizedCode += createNumberExp(expression) +  ' ';
+                    expression.Clear();
+                }
             }
-            else if (fragment == "(")
+            else if (holdingLogic)
             {
-                tokenizedCode += "L_PAR";
-            }
-            else if (fragment == ")")
-            {
-                tokenizedCode += "R_PAR";
-            }            
-            else if (fragment == "=")
-            {
-                tokenizedCode += "EQ";
-            }
-            else if (fragment == "{")
-            {
-                tokenizedCode += "L_K";
-            }
-            else if (fragment == "}")
-            {
-                tokenizedCode += "R_K";
-            }
-            else if (fragment == "\n")
-            {
-                tokenizedCode += "BRK";
-            }
-            else if (specialChars.Contains(fragment))
-            {
-                tokenizedCode += fragment;
+
             }
             else
             {
-                string token = "VALUE->";
-                if (int.TryParse(fragment, out int n))
+
+                if (fragment == "var")
                 {
-                    token += "int:";
+                    tokenizedCode += "VAR_D";
+                }
+                else if (fragment == "import")
+                {
+                    tokenizedCode += "IMP";
+                }
+                else if (fragment == ",")
+                {
+                    tokenizedCode += "CO";
+                }
+                else if (fragment == "(")
+                {
+                    tokenizedCode += "L_PAR";
+                }
+                else if (fragment == ")")
+                {
+                    tokenizedCode += "R_PAR";
+                }
+                else if (fragment == "=")
+                {
+                    tokenizedCode += "EQ";
+                }
+                else if (fragment == "{")
+                {
+                    tokenizedCode += "L_K";
+                }
+                else if (fragment == "}")
+                {
+                    tokenizedCode += "R_K";
+                }
+                else if (fragment == "\n")
+                {
+                    tokenizedCode += "BRK";
+                }
+                else if (fragment == "/end")
+                {
+                    tokenizedCode += "endprogram";
+                }
+                else if (fragment == "+")
+                {
+                    tokenizedCode += "ADD_OP";
+                }
+                else if (fragment == "-")
+                {
+                    tokenizedCode += "ADD_OP";
+                }
+                else if (fragment.Length > 0 && fragment[0].ToString() == "'" && fragment[fragment.Length - 1].ToString() == "'")
+                {
+                    tokenizedCode += "STR:" + fragment;
                 }
                 else if (fragment == "true" || fragment == "false")
                 {
-                    token += "bool:";
-                }                
-                token += fragment;
-                tokenizedCode += token;
+                    tokenizedCode += "BOOL:" + fragment;
+                }
+                else if (int.TryParse(fragment, out int n))
+                {
+                    holdingExp = true;
+                    expression.Add("INT:" + fragment);
+                }
+                else if (specialChars.Contains(fragment))
+                {
+                    tokenizedCode += fragment;
+                }
+                else
+                {
+                    string token = "VALUE->" + fragment;
+                    tokenizedCode += token;
 
+                }
+                tokenizedCode += ' ';
             }
-            tokenizedCode += ' ';
         }
         tokenizedCode = tokenizedCode.Trim();
         Debug.Log(tokenizedCode);
         return tokenizedCode;
     }
+    //public bool solveBooleanExp()
+    //{
+
+    //}
     public void generateAST(string tokenList)
     {
         POSITION.Line = 1;
@@ -241,8 +400,9 @@ public class COMPARER : MonoBehaviour
         string[] tokenStack = tokenList.Split(' ');
         string AST = "";
 
-        List<string> keyTokens = new List<string>{ "IMP", "VAR_D", "NAMED_VAR", "ATR_VAR", "FUNC" };
+        List<string> keyTokens = new List<string>{ "IMP", "VAR_D" };
         List<string> avaibleFunctions = new List<string> { "if:1:bool", "for_interval:2:int,int" };
+        //List<string> systemTypes = new List<string> { "int", "string", "bool" };
 
         string placeHolder = "";        
 
@@ -272,7 +432,7 @@ public class COMPARER : MonoBehaviour
                         }
                         else
                         {
-                            ERROR.importError(POSITION.GetPosition(), $"biblioteca {lib} nao existe nos arquivos. Voce digitou o nome corretamente?");
+                            ERROR.importError(POSITION.GetPosition(), $"biblioteca '{lib}' nao existe nos arquivos. Voce digitou o nome corretamente?");
                             break;
                         }
                     }
@@ -282,14 +442,66 @@ public class COMPARER : MonoBehaviour
                 {
                     if (token.Contains("VALUE"))
                     {
-                        string name = token.Split("->")[1];
-                        if (!specialChars.Contains(name) && name != "string:" && !keyTokens.Contains(name))
+                        string varName = token.Split("->")[1];
+                        if (i < tokenStack.Length - 2)
                         {
-                            placeHolder = "NAMED_VAR:" + name;
+                            i++;
+                            token = tokenStack[i];
+
+                            if (token == "EQ")
+                            {
+                                i++;
+                                token = tokenStack[i];
+
+                                if (!token.Contains("VALUE"))
+                                {
+                                    if (token.Contains("INT") || token.Contains("BOOL") || token.Contains("STR"))
+                                    {                                        
+                                        systemVariables.Add(varName +"->"+ token);
+                                        placeHolder = "";
+                                    }
+                                    else
+                                    {
+                                        ERROR.unnexpectedValue(POSITION.GetPosition(), $"o valor {token} não e valido para o contexto fornecido");
+                                        break;
+                                    }
+                                }
+                                else
+                                {
+                                    bool foundVar = false;
+                                    string varHold = "";
+                                    string varCheker = token.Split("->")[1];
+                                    foreach (string variable in systemVariables)
+                                    {
+                                        if (variable.Contains(varCheker))
+                                        {
+                                            foundVar = true;
+                                            varHold = variable;
+                                            break;
+                                        }
+                                    }
+                                    if (foundVar)
+                                    {
+                                        systemVariables.Add(varName + "->" + varHold.Split("->")[1]);
+                                        placeHolder = "";
+                                    }
+                                    else
+                                    {
+                                        ERROR.undefinedValue(POSITION.GetPosition(), $"o valor {varCheker} nao foi atribuido as variaveis do sistema, declare-a.");
+                                        break;
+                                    }
+                                }
+                            }
+                            else
+                            {
+                                ERROR.unnexpectedChar(POSITION.GetPosition(), "esperado o operador '=', para atribuicao de variaveis.");
+                                break;
+                            }
+
                         }
                         else
                         {
-                            ERROR.nameError(POSITION.GetPosition(), "nao utilize tipos primitivos e carateres especiais para nomear variaveis!");
+                            ERROR.syntaxError(POSITION.GetPosition(), "variavel nao atribuida.");
                             break;
                         }
                     }
@@ -299,57 +511,84 @@ public class COMPARER : MonoBehaviour
                         break;
                     }
                 }
-                else if (placeHolder.Contains("NAMED_VAR"))
-                {
-                    if (token == "EQ")
-                    {
-                        placeHolder = "ATR_VAR:" + placeHolder.Split(':')[1];
-                    }
-                    else
-                    {
-                        ERROR.unnexpectedChar(POSITION.GetPosition(), "esperado '=', para atribuicao de valor.");
-                        break;
-                    }
-                }
-                else if (placeHolder.Contains("ATR_VAR"))
-                {
-                    if (token.Contains("VALUE") && (token.Contains("string") || token.Contains("int") || token.Contains("bool")))
-                    {
-                        string value = token.Split("->")[1];
-                        if (!specialChars.Contains(value) && !keyTokens.Contains(value))
-                        {
-                            systemVariables.Add($"{placeHolder.Split(':')[1]}:{value}");
-                            placeHolder = "";
-                        }
-                        else
-                        {
-                            ERROR.unnexpectedValue(POSITION.GetPosition(), $"'{token}', nao e valido no contexto fornecido.");
-                            break;
-                        }
-                    }
-                    else
-                    {
-                        ERROR.unnexpectedValue(POSITION.GetPosition(), $"'{token}', nao e valido no contexto fornecido.");
-                        break;
-                    }
-                }
+                
 
                 else if (placeHolder.Contains("VALUE"))
-                {                    
+                {
+                    Debug.Log($"PlaceHolder has: {placeHolder}");
                     if (token == "L_PAR")
                     {
                         placeHolder = "FUNC:" + placeHolder.Split("->")[1];
                     }
                     else
                     {
-                        ERROR.undefinedExpression(POSITION.GetPosition(), $"termo desconhecido '{token}'. Voce se esqueceu de importar alguma biblioteca?");
+                        ERROR.undefinedExpression(POSITION.GetPosition(), $"termo desconhecido '{placeHolder}'. Voce se esqueceu de importar alguma biblioteca?");
                         break;
                     }
                 }
 
                 else if (placeHolder.Contains("FUNC"))
                 {
-                    
+                    string metodoth = placeHolder.Split(':')[1];
+                    bool foundMatch = false;
+
+                    string funConfigs = "";
+                    foreach (string f in avaibleFunctions)
+                    {
+                        if (f.Contains(metodoth))
+                        {
+                            foundMatch = true;
+                            funConfigs = f;
+                            break;
+                        }
+                    }
+
+                    if (foundMatch)
+                    {
+                        int parAmount = int.Parse(funConfigs.Split(':')[1]);
+                        int parIndex = 0;
+                        
+                        string[] parTypes;
+                        if (parAmount > 0)
+                        {
+                            parTypes = funConfigs.Split(':')[2].Split(',');
+                        }
+                        while (true)
+                        {
+                            if (i < tokenStack.Length - 1)
+                            {
+                                i++;
+                                token = tokenStack[i];
+                                if (token.Contains("VALUE"))
+                                {
+
+                                }
+                                else if (token == "CO")
+                                {
+
+                                }
+                                else if (token == "R_PAR")
+                                {
+
+                                }
+                                else
+                                {
+
+                                }
+                            }
+                            else
+                            {
+                                break;
+                            }
+                        }
+
+
+                    }
+                    else
+                    {
+                        ERROR.undefinedExpression(POSITION.GetPosition(), $"A funcao {metodoth} nao e definida. Voce se esqueceu de importar alguma biblioteca?");
+                        break;
+                    }
                 }               
                 
             }
@@ -359,10 +598,14 @@ public class COMPARER : MonoBehaviour
                 {
                     placeHolder = token;                    
                 }
-                else if (token == "BRK" || token == "endprogram")
+                else if (token == "BRK")
                 {
                     POSITION.Line++;
                     POSITION.Term = 1;
+                }
+                else if (token == "endprogram")
+                {
+                    break;
                 }
                 else
                 {
@@ -395,6 +638,7 @@ public class COMPARER : MonoBehaviour
         string formatedTypCode = formatCode(code);
         string tokCode = tokenizeCode(formatedTypCode);
         generateAST(tokCode);
+        
 
         /*POSITION pos = new POSITION();
 

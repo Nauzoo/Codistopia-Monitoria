@@ -1679,7 +1679,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1323722987}
   m_HandleRect: {fileID: 1323722986}
   m_Direction: 2
-  m_Value: 1
+  m_Value: 0
   m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -2993,7 +2993,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "var name = 'bingus';\nwrite: name;\u200B"
+  m_text: "# Digite seu codigo aq!\n\nvar name = 'world'\n\nwrite('hello!' + name)\u200B"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 9b4e6cf30c0fd05438e802ee1f3e6b07, type: 2}
   m_sharedMaterial: {fileID: -6530976136132995891, guid: 9b4e6cf30c0fd05438e802ee1f3e6b07, type: 2}
@@ -3710,7 +3710,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30e83315476438f4fbc42eef4d708320, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  codeLines: {fileID: 1282504499}
+  codeLines: {fileID: 1678525935}
+  visualCode: {fileID: 1282504499}
   lineCounter: {fileID: 1460782795}
   sceneChanger: {fileID: 1541667556}
   pcOff: {fileID: 8300000, guid: 54df38f609b4a4640849e7dbbb7387e1, type: 3}
@@ -3943,7 +3944,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1779554673}
   m_HandleRect: {fileID: 1779554671}
   m_Direction: 0
-  m_Value: 0
+  m_Value: 1
   m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -4148,9 +4149,14 @@ MonoBehaviour:
   m_CaretColor: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
   m_CustomCaretColor: 0
   m_SelectionColor: {r: 0.65882355, g: 0.80784315, b: 1, a: 0.7529412}
-  m_Text: 'var name = ''bingus'';
+  m_Text: '# Digite seu codigo aq!
 
-    write: name;'
+
+    var name = ''world''
+
+
+    write(''hello!''
+    + name)'
   m_CaretBlinkRate: 0.85
   m_CaretWidth: 5
   m_ReadOnly: 0

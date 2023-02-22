@@ -5,7 +5,8 @@ using TMPro;
 
 public class UI_Buttons : MonoBehaviour
 {
-    [SerializeField] private TextMeshProUGUI codeLines;
+    [SerializeField] private TMP_InputField codeLines;
+    [SerializeField] private TextMeshProUGUI visualCode;
     [SerializeField] private TextMeshProUGUI lineCounter;
     [SerializeField] private ChangeScene sceneChanger;
 
@@ -17,7 +18,7 @@ public class UI_Buttons : MonoBehaviour
     public void ZoomIn(){
         if (currentZoom < zoomMax)
         {
-            codeLines.fontSize += 5;
+            visualCode.fontSize += 5;
             lineCounter.fontSize += 5;
             currentZoom += 5;
         }
@@ -26,7 +27,7 @@ public class UI_Buttons : MonoBehaviour
     public void ZoomOut() {
         if (currentZoom > zoomMin)
         {
-            codeLines.fontSize -= 5;
+            visualCode.fontSize -= 5;
             lineCounter.fontSize -= 5;
             currentZoom -= 5;
         }

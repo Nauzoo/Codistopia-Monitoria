@@ -6,15 +6,16 @@ using TMPro;
 public class Indexer : MonoBehaviour
 {
     [SerializeField] TMP_InputField TextInput;
-
+    [SerializeField] TextMeshProUGUI text;
     private void Start()
-    {
+    {        
+        Debug.Log(text.text);
         Invoke("OnCodeChange", 1);
     }
     // Update is called once per frame
     public void OnCodeChange()
     {
-        string[] codeTxt = TextInput.text.Split(" ");
+        string[] codeTxt = text.text.Split(" ");
 
         string formatedCode = "";
 
@@ -37,7 +38,7 @@ public class Indexer : MonoBehaviour
             }
         }
 
-        TextInput.text = formatedCode;
+        text.text = formatedCode;
 
     }
 }
