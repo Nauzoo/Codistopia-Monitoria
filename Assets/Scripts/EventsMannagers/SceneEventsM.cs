@@ -22,7 +22,7 @@ public class SceneEventsM : EventMannager
         switch (name.Trim())
         {
             case "OpenPc":
-                savingSceneConf();
+                saveSceneConf();
                 SoundMannager.Instance.PlaySound(PcOn);
                 sceneChanger.ChangeToScene(1);
                 break;

@@ -179,7 +179,7 @@ public class COMPARER : MonoBehaviour
             }            
         }
         Debug.Log(formatedCode);
-        return formatedCode + "/end";
+        return formatedCode + " /end";
             //.Trim((char)8203);
     }
     public List<string> Addterms(List<string> exp)
@@ -211,7 +211,7 @@ public class COMPARER : MonoBehaviour
                 }
                 else
                 {
-                    newExp[newExp.Count - 1] = $"SYUB:null,null";
+                    newExp[newExp.Count - 1] = $"SUB:null,null";
                 }
             }
             else

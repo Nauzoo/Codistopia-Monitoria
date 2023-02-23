@@ -1679,7 +1679,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1323722987}
   m_HandleRect: {fileID: 1323722986}
   m_Direction: 2
-  m_Value: 0
+  m_Value: 1
   m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -3735,6 +3735,7 @@ MonoBehaviour:
   h_scrollbar: {fileID: 1657159323}
   codeBackup: {fileID: 1167080240}
   CodeCounter: {fileID: 1794382176}
+  indexateTime: 2
 --- !u!114 &1541667556
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3944,7 +3945,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1779554673}
   m_HandleRect: {fileID: 1779554671}
   m_Direction: 0
-  m_Value: 1
+  m_Value: 0
   m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:

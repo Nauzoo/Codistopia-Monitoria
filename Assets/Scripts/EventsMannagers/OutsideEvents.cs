@@ -19,6 +19,12 @@ public class OutsideEvents : EventMannager
                 }
                 break;
 
+            case "OpenPc":
+                saveSceneConf();
+                SoundMannager.Instance.PlaySound(SoundMannager.Instance.Sfx_PcOn);
+                ChangeToScene(1);
+
+                break;
             case "killSave":
                 DeleteSave();
                 break;

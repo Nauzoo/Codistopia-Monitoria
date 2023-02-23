@@ -1,0 +1,5 @@
+import vikcky
+
+vicky.move(1, 'up')
+
+write('hello, world!')

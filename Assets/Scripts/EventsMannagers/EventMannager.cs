@@ -29,7 +29,11 @@ public abstract class EventMannager : MonoBehaviour
         File.WriteAllText(path2, "");
         File.WriteAllText(path3, "nullity");
     }
-    public void savingSceneConf()
+    public void ChangeToScene(int sceneIndex)
+    {
+        ChangeScene.Instance.ChangeToScene(sceneIndex);
+    }
+    public void saveSceneConf()
     {
         LastScene.lastPassedScene = SceneManager.GetActiveScene().buildIndex;
         LastScene.lastPlayerPos = Player_movement.GetInstance().transform.position;

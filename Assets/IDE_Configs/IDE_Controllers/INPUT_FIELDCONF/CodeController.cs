@@ -24,7 +24,53 @@ public class CodeController : MonoBehaviour
     private int currentLine;
     private int LineCount;
     private int CaretPosition;
+    public float indexateTime = 2f;
+    private float indexateClock;
 
+    private void BackupCode(string newCode)
+    {
+        if (isEditing && newCode.Length > 1)
+        {
+            codeBackup.text = newCode;
+            Debug.Log("BackUp;");
+            CodeSet();
+        }
+
+    }
+    private void CodeSet()
+    {
+        mainInput.gameObject.GetComponent<TMP_InputField>().text = codeBackup.text;
+
+    }
+    private void indeXate(string codeLines)
+    {
+        string[] codeTxt = codeLines.Split(" ");
+
+        string formatedCode = "";
+
+        foreach (string term in codeTxt)
+        {
+
+            if (term.Contains("if"))
+            {
+                formatedCode += $" <color=blue> {term} </color> ";
+            }
+            else if (term.Contains("var"))
+            {
+                formatedCode += $" <color=red> {term} </color> ";
+            }
+            else if (term.Contains("<color=") || term.Contains("</color>")) {
+                continue;
+            }
+            else
+            {
+                formatedCode += term;
+            }
+        }
+
+        mainInput.gameObject.GetComponent<TMP_InputField>().text = formatedCode;
+
+    }
     void Start()
     {
         TMP_InputField inputField = mainInput.gameObject.GetComponent<TMP_InputField>();
@@ -32,11 +78,15 @@ public class CodeController : MonoBehaviour
         barTransform = v_scrollbar.GetComponent<RectTransform>();
 
         inputField.onValueChanged.AddListener(BackupCode);
-        inputField.onEndEdit.AddListener(CodeSet);
+        inputField.onEndEdit.AddListener(indeXate);
+        //inputField.onValueChanged.AddListener(CodeSet);
+        
+        //inputField.onEndEdit.AddListener(CodeSet);
 
         originalCodeSize = new Vector2(codeArea.rect.width - codeArea.rect.width, codeArea.rect.height);
         originalBarSize = new Vector2(barTransform.rect.width, barTransform.rect.height);
 
+        indexateClock = indexateTime;
 
         UpdateLines();
     }
@@ -71,13 +121,13 @@ public class CodeController : MonoBehaviour
             keySwitcher = false;
             ExitEditMode();
         }
-
+        
     }
 
     public void EnterEditMode() {
         codeArea.sizeDelta = new Vector2(codeArea.rect.width - codeArea.rect.width, codeArea.rect.height / 2.6f);
         barTransform.sizeDelta = new Vector2(barTransform.rect.width, barTransform.rect.height / 2.6f);
-
+        CodeSet();
         isEditing = true;
 
         VeditingPlace = v_scrollbar.GetComponent<Scrollbar>().value;
@@ -88,7 +138,7 @@ public class CodeController : MonoBehaviour
     public void ExitEditMode() {
         codeArea.sizeDelta = originalCodeSize;
         barTransform.sizeDelta = originalBarSize;
-        CodeSet(codeBackup.text);
+        CodeSet();
 
         isEditing = false;
     }
@@ -146,16 +196,7 @@ public class CodeController : MonoBehaviour
 
         CodeCounter.text = LineCount.ToString();
 
-        codeBackup.text = codeLines.text;
+        //codeBackup.text = codeLines.text;
     }
-
-    private void BackupCode(string newCode) {
-        codeBackup.text = newCode;
-
-    }
-    private void CodeSet(string s)
-    {
-        mainInput.gameObject.GetComponent<TMP_InputField>().text = s;
-
-    }
+    
 }

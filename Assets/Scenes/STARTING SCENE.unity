@@ -588,6 +588,7 @@ GameObject:
   - component: {fileID: 450048069}
   - component: {fileID: 450048070}
   - component: {fileID: 450048071}
+  - component: {fileID: 450048072}
   m_Layer: 5
   m_Name: EventsHandler
   m_TagString: Untagged
@@ -652,6 +653,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fadeAnim: {fileID: 601814246}
   fader: {fileID: 601814245}
+--- !u!114 &450048072
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 450048068}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7cda0051afadb8049bd8425ca4ce98b3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startButton: {fileID: 1890198790}
+  buttonText: {fileID: 1804644797}
 --- !u!1 &488045560
 GameObject:
   m_ObjectHideFlags: 0

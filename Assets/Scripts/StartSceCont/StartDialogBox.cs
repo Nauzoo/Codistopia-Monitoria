@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using System.IO;
 
 public class StartDialogBox : MonoBehaviour
 {
@@ -94,6 +95,16 @@ public class StartDialogBox : MonoBehaviour
 
     private void NewGame()
     {
+        string path = Application.persistentDataPath + "/playerData.txt";
+        if (!File.Exists(path))
+        {
+            string path1 = Application.persistentDataPath + "/playerData.txt";
+            string path2 = Application.persistentDataPath + "/eventData.txt";
+            string path3 = Application.persistentDataPath + "/sceneData.txt";
+            File.WriteAllText(path1, "nullity");
+            File.WriteAllText(path2, "");
+            File.WriteAllText(path3, "nullity");
+        }
         EventMannager.DeleteSave();
         StartGame();
 
