@@ -15,7 +15,7 @@ EditorBuildSettings:
     path: Assets/IDE_Configs/Scenes/IDE_SCENE.unity
     guid: 5ec882a9eee2880499748367c1a4b0b6
   - enabled: 1
-    path: Assets/Scenes/Outside/town_main.unity
+    path: Assets/Scenes/Outside/town_main/town_main.unity
     guid: db40716f04d82a14691b95a2e231569b
   - enabled: 1
     path: Assets/Scenes/Insides/Houses/TOHOHouse.unity

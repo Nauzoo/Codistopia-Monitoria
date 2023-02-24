@@ -123,6 +123,11 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!20 &225254977 stripped
+Camera:
+  m_CorrespondingSourceObject: {fileID: 3113634678994747739, guid: b57a752e4f7cbf94e8cad68647d37d0e, type: 3}
+  m_PrefabInstance: {fileID: 2120577928}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &253736048
 GameObject:
   m_ObjectHideFlags: 0
@@ -1078,6 +1083,10 @@ PrefabInstance:
     - target: {fileID: 5965550077150947756, guid: c6ea6b9e4c9d20748938e36431702a92, type: 3}
       propertyPath: m_Enabled
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5965550077150947756, guid: c6ea6b9e4c9d20748938e36431702a92, type: 3}
+      propertyPath: m_Lens.OrthographicSize
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 5965550077150947757, guid: c6ea6b9e4c9d20748938e36431702a92, type: 3}
       propertyPath: m_RootOrder
@@ -2079,6 +2088,45 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6743241433559090255, guid: 63d2d7d63ee212343ad0914b1fed5dbd, type: 3}
   m_PrefabInstance: {fileID: 1229476279}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1750451587 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 249626031422489725, guid: 676d8bae017a95546813910a1419ed98, type: 3}
+  m_PrefabInstance: {fileID: 2143661267}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1750451588
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1750451587}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a79441f348de89743a2939f4d699eac1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_RenderShadows: 1
+  m_RequiresDepthTextureOption: 2
+  m_RequiresOpaqueTextureOption: 2
+  m_CameraType: 0
+  m_Cameras:
+  - {fileID: 225254977}
+  m_RendererIndex: -1
+  m_VolumeLayerMask:
+    serializedVersion: 2
+    m_Bits: 1
+  m_VolumeTrigger: {fileID: 0}
+  m_VolumeFrameworkUpdateModeOption: 2
+  m_RenderPostProcessing: 0
+  m_Antialiasing: 0
+  m_AntialiasingQuality: 2
+  m_StopNaN: 0
+  m_Dithering: 0
+  m_ClearDepth: 1
+  m_AllowXRRendering: 1
+  m_RequiresDepthTexture: 0
+  m_RequiresColorTexture: 0
+  m_Version: 2
 --- !u!1 &1908713870
 GameObject:
   m_ObjectHideFlags: 0
@@ -3003,6 +3051,10 @@ PrefabInstance:
     - target: {fileID: 249626031422489722, guid: 676d8bae017a95546813910a1419ed98, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 249626031422489723, guid: 676d8bae017a95546813910a1419ed98, type: 3}
+      propertyPath: orthographic size
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 249626031422489725, guid: 676d8bae017a95546813910a1419ed98, type: 3}
       propertyPath: m_Name

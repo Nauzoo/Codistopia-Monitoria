@@ -140,7 +140,7 @@ Transform:
   m_Children:
   - {fileID: 6024718710564553407}
   m_Father: {fileID: 0}
-  m_RootOrder: 14
+  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &6024718710570777445
 SpriteRenderer:
@@ -259,7 +259,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   visualCue: {fileID: 6024718710564553404}
-  scneChanger: {fileID: 0}
   myDoorId: 1
 --- !u!95 &976958639
 Animator:

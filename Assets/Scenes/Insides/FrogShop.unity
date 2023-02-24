@@ -182,6 +182,11 @@ PrefabInstance:
     m_RemovedComponents: []
     m_AddedGameObjects: []
   m_SourcePrefab: {fileID: 100100000, guid: b57a752e4f7cbf94e8cad68647d37d0e, type: 3}
+--- !u!20 &105194533 stripped
+Camera:
+  m_CorrespondingSourceObject: {fileID: 3113634678994747739, guid: b57a752e4f7cbf94e8cad68647d37d0e, type: 3}
+  m_PrefabInstance: {fileID: 105194532}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &181939450
 GameObject:
   m_ObjectHideFlags: 0
@@ -3675,6 +3680,10 @@ PrefabInstance:
       propertyPath: m_Follow
       value: 
       objectReference: {fileID: 1289657193}
+    - target: {fileID: 5965550077150947756, guid: c6ea6b9e4c9d20748938e36431702a92, type: 3}
+      propertyPath: m_Lens.OrthographicSize
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 5965550077150947757, guid: c6ea6b9e4c9d20748938e36431702a92, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -5526,6 +5535,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 249626031422489723, guid: 676d8bae017a95546813910a1419ed98, type: 3}
+      propertyPath: orthographic size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 249626031422489723, guid: 676d8bae017a95546813910a1419ed98, type: 3}
       propertyPath: m_BackGroundColor.a
       value: 1
       objectReference: {fileID: 0}
@@ -5545,6 +5558,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Main Camera
       objectReference: {fileID: 0}
+    - target: {fileID: 5329780762992855498, guid: 676d8bae017a95546813910a1419ed98, type: 3}
+      propertyPath: m_Cameras.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5329780762992855498, guid: 676d8bae017a95546813910a1419ed98, type: 3}
+      propertyPath: m_Cameras.Array.data[0]
+      value: 
+      objectReference: {fileID: 105194533}
     m_RemovedComponents: []
     m_AddedGameObjects: []
   m_SourcePrefab: {fileID: 100100000, guid: 676d8bae017a95546813910a1419ed98, type: 3}
