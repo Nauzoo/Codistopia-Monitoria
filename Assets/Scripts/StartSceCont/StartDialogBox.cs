@@ -85,26 +85,17 @@ public class StartDialogBox : MonoBehaviour
     }
     public void StartGame()
     {
-        SavingController.LoadLastScene();
-        Vector2 PlayerPos = SavingController.LoadPlayer();
-        Vector2 VickPos = SavingController.LoadVick();
+        GameSave save = SavingController.LoadGame();
+        SavedSceneData.savedScene = save.SavedScene;       
+        Vector2 PlayerPos = new Vector2 (save.playerPosition[0], save.playerPosition[1]);
+        Vector2 VickPos = new Vector2(save.vickyPosition[0], save.vickyPosition[1]);
         LastScene.lastPlayerPos = new Vector2(PlayerPos[0], PlayerPos[1]);
         LastScene.lastVickPos = new Vector2(VickPos[0], VickPos[1]);
         ChangeScene.Instance.ChangeToScene(SavedSceneData.savedScene);
     }
 
     private void NewGame()
-    {
-        string path = Application.persistentDataPath + "/playerData.txt";
-        if (!File.Exists(path))
-        {
-            string path1 = Application.persistentDataPath + "/playerData.txt";
-            string path2 = Application.persistentDataPath + "/eventData.txt";
-            string path3 = Application.persistentDataPath + "/sceneData.txt";
-            File.WriteAllText(path1, "nullity");
-            File.WriteAllText(path2, "");
-            File.WriteAllText(path3, "nullity");
-        }
+    {        
         EventMannager.DeleteSave();
         StartGame();
 

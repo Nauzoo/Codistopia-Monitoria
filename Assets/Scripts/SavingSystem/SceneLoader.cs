@@ -34,9 +34,10 @@ public class SceneLoader : MonoBehaviour
             vick.gameObject.transform.position = vickPos;
         }
 
-        if (SavingController.LoadEvents() != null)
+        GameSave data = SavingController.LoadGame();
+        if (data.happendEvents != null)
         {
-            foreach (string events in SavingController.LoadEvents())
+            foreach (string events in data.happendEvents)
             {
                 EventsData.happenedEvents.Add(events);
             }

@@ -11,23 +11,25 @@ public abstract class EventMannager : MonoBehaviour
 
     public void SaveGame()
     {
-        SavingController.SavePlayer(Player_movement.GetInstance());
-        SavingController.SaveVick(VickFollower.GetInstance());
-        SavingController.SaveEvents();
+        GameSave data = new GameSave();
+        data.hasSave = true;
+        Vector3 playerPos = Player_movement.GetInstance().transform.position;
+        Vector3 vickyPos = VickFollower.GetInstance().transform.position;
+        data.playerPosition = new float[] { playerPos[0], playerPos[1] };
+        data.vickyPosition = new float[] { vickyPos[0], vickyPos[1] };
         int sceneId = SceneManager.GetActiveScene().buildIndex;
-        SavingController.SaveLastScene(sceneId);
+        data.SavedScene = sceneId;
+        data.happendEvents = EventsData.happenedEvents.ToArray();
+        SavingController.SaveGame(data);
         SoundMannager.Instance.PlaySound(SoundMannager.Instance.Sfx_Save);
     }
     public static void DeleteSave()
     {
         Debug.Log("Deleting save data...");
 
-        string path1 = Application.persistentDataPath + "/playerData.txt";
-        string path2 = Application.persistentDataPath + "/eventData.txt";
-        string path3 = Application.persistentDataPath + "/sceneData.txt";
-        File.WriteAllText(path1, "nullity");
-        File.WriteAllText(path2, "");
-        File.WriteAllText(path3, "nullity");
+        GameSave nullData = new GameSave();
+        SavingController.SaveGame(nullData);
+
     }
     public void ChangeToScene(int sceneIndex)
     {

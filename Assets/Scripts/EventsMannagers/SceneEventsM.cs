@@ -33,12 +33,12 @@ public class SceneEventsM : EventMannager
                 break;
 
             case "SaveGame":
-                SavingController.SavePlayer(Player_movement.GetInstance());
+                /*SavingController.SavePlayer(Player_movement.GetInstance());
                 SavingController.SaveVick(VickFollower.GetInstance());
                 SavingController.SaveEvents();
                 int sceneId = SceneManager.GetActiveScene().buildIndex;
                 SavingController.SaveLastScene(sceneId);
-                SoundMannager.Instance.PlaySound(saveFx);
+                SoundMannager.Instance.PlaySound(saveFx);*/
                 break;
             case "MarisaT":
                 EventsData.happenedEvents.Add("marisaT");

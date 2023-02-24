@@ -11,8 +11,9 @@ public class SavesAdder : MonoBehaviour
     [SerializeField] TextMeshProUGUI buttonText;
     void Start()
     {
-        string path = Application.persistentDataPath + "/playerData.txt";
-        if (!File.Exists(path) || File.ReadAllText(path) == "nullity")
+        GameSave data = SavingController.LoadGame();
+        
+        if (!data.hasSave)
         {
             startButton.interactable = false;
             buttonText.text = "<color=#444444>>>Carregar</color>";
