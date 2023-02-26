@@ -66,7 +66,7 @@ public class CodeController : MonoBehaviour
             }
             else
             {
-                formatedCode += term;
+                formatedCode += ' ' + term + ' ';
             }
         }
 

@@ -188,7 +188,7 @@ public class COMPARER : MonoBehaviour
         for (int i = 0; i < exp.Count; i++)
         {
             string n = exp[i];
-            if (n == "+")
+            if (n == "ADD_OP")
             {
                 if (newExp.Count > 0 && i < exp.Count - 1)
                 {
@@ -201,7 +201,7 @@ public class COMPARER : MonoBehaviour
                     newExp[newExp.Count - 1] = $"ADD:null,null";
                 }
             }
-            else if (n == "-")
+            else if (n == "SUB_OP")
             {
                 if (newExp.Count > 0 && i < exp.Count - 1)
                 {
@@ -227,7 +227,7 @@ public class COMPARER : MonoBehaviour
         for (int i = 0; i < exp.Count; i ++)
         {
             string n = exp[i];
-            if (n == "*")
+            if (n == "MUL_OP")
             {
                 if (newExp.Count > 0 && i < exp.Count - 1)
                 {
@@ -240,7 +240,7 @@ public class COMPARER : MonoBehaviour
                     newExp[newExp.Count - 1] = $"MUL:null,null";
                 }
             }
-            else if (n == "/")
+            else if (n == "DIV_OP")
             {
                 if (newExp.Count > 0 && i < exp.Count - 1)
                 {
@@ -273,116 +273,90 @@ public class COMPARER : MonoBehaviour
     public string tokenizeCode(string code)
     {
         string tokenizedCode = "";
-        string[] codeParts = code.Split(' ');
-        List<string> operators = new List<string>(){ "+", "-", "*", "/" };
-
-        bool holdingExp = false;
-        bool holdingLogic = false;
-
-        List<string> expression = new List<string>();
+        string[] codeParts = code.Split(' ');        
+        
         foreach (string fragment in codeParts)
         {
-            if (holdingExp)
+            if (fragment == "var")
             {
-                if (int.TryParse(fragment, out int n))
-                {
-                    expression.Add($"INT:{fragment}");
-                }
-                else if (operators.Contains(fragment))
-                {
-                    expression.Add(fragment);
-                }
-                else
-                {
-                    holdingExp = false;
-                    foreach(string element in expression)
-                    {
-                        Debug.Log(element);
-                    }
-                    tokenizedCode += createNumberExp(expression) +  ' ';
-                    expression.Clear();
-                }
+                tokenizedCode += "VAR_D";
             }
-            else if (holdingLogic)
+            else if (fragment == "import")
             {
-
+                tokenizedCode += "IMP";
+            }
+            else if (fragment == ",")
+            {
+                tokenizedCode += "CO";
+            }
+            else if (fragment == "(")
+            {
+                tokenizedCode += "L_PAR";
+            }
+            else if (fragment == ")")
+            {
+                tokenizedCode += "R_PAR";
+            }
+            else if (fragment == "=")
+            {
+                tokenizedCode += "EQ";
+            }
+            else if (fragment == "{")
+            {
+                tokenizedCode += "L_K";
+            }
+            else if (fragment == "}")
+            {
+                tokenizedCode += "R_K";
+            }
+            else if (fragment == "\n")
+            {
+                tokenizedCode += "BRK";
+            }
+            else if (fragment == "/end")
+            {
+                tokenizedCode += "endprogram";
+            }
+            else if (fragment == "+")
+            {                
+                tokenizedCode += "ADD_OP";
+            }
+            else if (fragment == "-")
+            {
+                tokenizedCode += "SUB_OP";
+            }
+            else if (fragment == "*")
+            {
+                tokenizedCode += "MUL_OP";
+            }
+            else if (fragment == "/")
+            {
+                tokenizedCode += "DIV_OP";
+            }
+            else if (fragment.Length > 0 && fragment[0].ToString() == "'" && fragment[fragment.Length - 1].ToString() == "'")
+            {
+                tokenizedCode += "STR:" + fragment;
+            }
+            else if (fragment == "true" || fragment == "false")
+            {
+                tokenizedCode += "BOOL:" + fragment;
+            }
+            else if (int.TryParse(fragment, out int n))
+            {
+                
+                tokenizedCode += "INT:" + fragment;                
+            }
+            else if (specialChars.Contains(fragment))
+            {
+                tokenizedCode += fragment;
             }
             else
             {
+                string token = "VALUE->" + fragment;
+                tokenizedCode += token;
 
-                if (fragment == "var")
-                {
-                    tokenizedCode += "VAR_D";
-                }
-                else if (fragment == "import")
-                {
-                    tokenizedCode += "IMP";
-                }
-                else if (fragment == ",")
-                {
-                    tokenizedCode += "CO";
-                }
-                else if (fragment == "(")
-                {
-                    tokenizedCode += "L_PAR";
-                }
-                else if (fragment == ")")
-                {
-                    tokenizedCode += "R_PAR";
-                }
-                else if (fragment == "=")
-                {
-                    tokenizedCode += "EQ";
-                }
-                else if (fragment == "{")
-                {
-                    tokenizedCode += "L_K";
-                }
-                else if (fragment == "}")
-                {
-                    tokenizedCode += "R_K";
-                }
-                else if (fragment == "\n")
-                {
-                    tokenizedCode += "BRK";
-                }
-                else if (fragment == "/end")
-                {
-                    tokenizedCode += "endprogram";
-                }
-                else if (fragment == "+")
-                {
-                    tokenizedCode += "ADD_OP";
-                }
-                else if (fragment == "-")
-                {
-                    tokenizedCode += "ADD_OP";
-                }
-                else if (fragment.Length > 0 && fragment[0].ToString() == "'" && fragment[fragment.Length - 1].ToString() == "'")
-                {
-                    tokenizedCode += "STR:" + fragment;
-                }
-                else if (fragment == "true" || fragment == "false")
-                {
-                    tokenizedCode += "BOOL:" + fragment;
-                }
-                else if (int.TryParse(fragment, out int n))
-                {
-                    holdingExp = true;
-                    expression.Add("INT:" + fragment);
-                }
-                else if (specialChars.Contains(fragment))
-                {
-                    tokenizedCode += fragment;
-                }
-                else
-                {
-                    string token = "VALUE->" + fragment;
-                    tokenizedCode += token;
-
-                }
-                tokenizedCode += ' ';
             }
+            tokenizedCode += ' ';
         }
         tokenizedCode = tokenizedCode.Trim();
         Debug.Log(tokenizedCode);
@@ -402,6 +376,7 @@ public class COMPARER : MonoBehaviour
 
         List<string> keyTokens = new List<string>{ "IMP", "VAR_D" };
         List<string> avaibleFunctions = new List<string> { "if:1:bool", "for_interval:2:int,int" };
+        List<string> operators = new List<string> { "ADD_OP", "SUB_OP", "DIV_OP", "MUL_OP" };
         //List<string> systemTypes = new List<string> { "int", "string", "bool" };
 
         string placeHolder = "";        
@@ -453,8 +428,34 @@ public class COMPARER : MonoBehaviour
                                 i++;
                                 token = tokenStack[i];
 
-                                if (!token.Contains("VALUE"))
+                                List<string> expression = new List<string>();
+                                if (i < tokenStack.Length - 1)
                                 {
+                                    if (operators.Contains(tokenStack[i + 1]))
+                                    {
+                                        expression.Add(token);
+                                        while (i < tokenStack.Length)
+                                        {
+                                            i++;
+                                            string tk = tokenStack[i];
+                                            if (operators.Contains(tk) || (tk.Contains("INT") && !tk.Contains("VALUE")))
+                                            {
+                                                expression.Add(tk);
+                                            }
+                                            else
+                                            {
+                                                i--;
+                                                break;
+                                            }
+                                        }
+
+                                    }
+                                    tokenStack[i] = createNumberExp(expression);
+                                    Debug.Log(tokenStack[i]);
+                                }
+
+                                if (!token.Contains("VALUE"))
+                                {                                    
                                     if (token.Contains("INT") || token.Contains("BOOL") || token.Contains("STR"))
                                     {                                        
                                         systemVariables.Add(varName +"->"+ token);
@@ -468,6 +469,13 @@ public class COMPARER : MonoBehaviour
                                 }
                                 else
                                 {
+                                    if (i < tokenStack.Length - 1)
+                                    {
+                                        if (operators.Contains(tokenStack[i + 1]))
+                                        {
+
+                                        }
+                                    }
                                     bool foundVar = false;
                                     string varHold = "";
                                     string varCheker = token.Split("->")[1];
