@@ -128,11 +128,13 @@ public class DialogMannagerV2 : MonoBehaviour
         thisChoices = new List<string>();
         contSig.SetActive(false);
 
-
+        
         if (scentenceIndex < thisStory.Count)
         {
             currentScentence = thisStory[scentenceIndex];
             isTyping = true;
+
+            DisplayChoices(thisChoices);
 
             if (currentScentence.Contains("-J"))
             {
@@ -199,8 +201,6 @@ public class DialogMannagerV2 : MonoBehaviour
                 currentScentence = thisStory[scentenceIndex];
 
             }
-
-            DisplayChoices(thisChoices);
                         
             dialogText.text = "";
             int lettersPassed = 0;
@@ -220,6 +220,7 @@ public class DialogMannagerV2 : MonoBehaviour
             }
             contSig.SetActive(true);
 
+            DisplayChoices(thisChoices);            
             isTyping = false;
         }
 
@@ -263,13 +264,13 @@ public class DialogMannagerV2 : MonoBehaviour
 
             index++;
         }
-
         for (int i = index; i < choices.Length; i++)
         {
             choices[i].gameObject.SetActive(false);
         }
 
     }
+   
     public void MakeChoice(int id)
     {
         SoundMannager.Instance.PlaySound(SoundMannager.Instance.Sfx_confirm);

@@ -24,27 +24,29 @@ public class CodeController : MonoBehaviour
     private int currentLine;
     private int LineCount;
     private int CaretPosition;
-    public float indexateTime = 2f;
-    private float indexateClock;
+    public float indexateTime = 2f;    
 
     private void BackupCode(string newCode)
     {
-        if (isEditing && newCode.Length > 1)
+        if (isEditing && newCode.Length > 1 && !newCode.Contains("</color>"))
         {
             codeBackup.text = newCode;
             Debug.Log("BackUp;");
-            CodeSet();
+            //CodeSet();
         }
 
     }
     private void CodeSet()
     {
-        mainInput.gameObject.GetComponent<TMP_InputField>().text = codeBackup.text;
+        if (codeBackup.text != null)
+        {
+            mainInput.gameObject.GetComponent<TMP_InputField>().text = codeBackup.text;
+        }
 
     }
     private void indeXate(string codeLines)
     {
-        string[] codeTxt = codeLines.Split(" ");
+        string[] codeTxt = codeBackup.text.Split(" ");
 
         string formatedCode = "";
 
@@ -53,7 +55,7 @@ public class CodeController : MonoBehaviour
 
             if (term.Contains("if"))
             {
-                formatedCode += $" <color=blue> {term} </color> ";
+                formatedCode += $" <color=blue>{term}</color> ";
             }
             else if (term.Contains("var"))
             {
@@ -80,13 +82,14 @@ public class CodeController : MonoBehaviour
         inputField.onValueChanged.AddListener(BackupCode);
         inputField.onEndEdit.AddListener(indeXate);
         //inputField.onValueChanged.AddListener(CodeSet);
-        
+
         //inputField.onEndEdit.AddListener(CodeSet);
+
+        codeBackup.text = mainInput.gameObject.GetComponent<TMP_InputField>().text;
 
         originalCodeSize = new Vector2(codeArea.rect.width - codeArea.rect.width, codeArea.rect.height);
         originalBarSize = new Vector2(barTransform.rect.width, barTransform.rect.height);
 
-        indexateClock = indexateTime;
 
         UpdateLines();
     }
@@ -138,7 +141,7 @@ public class CodeController : MonoBehaviour
     public void ExitEditMode() {
         codeArea.sizeDelta = originalCodeSize;
         barTransform.sizeDelta = originalBarSize;
-        CodeSet();
+        indeXate(codeBackup.text);
 
         isEditing = false;
     }
