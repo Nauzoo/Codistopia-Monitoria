@@ -2993,7 +2993,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "# Digite seu codigo aq!\n\nvar name = 'world'\n\nwrite('hello!' + name)\u200B"
+  m_text: "# Digite seu codigo aq!\n\nvar name = 'world'\n\nif name == 'world'\n\twrite('hello!'
+    + name)\nend\u200B"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 9b4e6cf30c0fd05438e802ee1f3e6b07, type: 2}
   m_sharedMaterial: {fileID: -6530976136132995891, guid: 9b4e6cf30c0fd05438e802ee1f3e6b07, type: 2}
@@ -4199,14 +4200,8 @@ MonoBehaviour:
   m_CaretColor: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
   m_CustomCaretColor: 0
   m_SelectionColor: {r: 0.65882355, g: 0.80784315, b: 1, a: 0.7529412}
-  m_Text: '# Digite seu codigo aq!
-
-
-    var name = ''world''
-
-
-    write(''hello!''
-    + name)'
+  m_Text: "# Digite seu codigo aq!\n\nvar name = 'world'\n\nif name == 'world'\n\twrite('hello!'
+    + name)\nend"
   m_CaretBlinkRate: 0.85
   m_CaretWidth: 5
   m_ReadOnly: 0

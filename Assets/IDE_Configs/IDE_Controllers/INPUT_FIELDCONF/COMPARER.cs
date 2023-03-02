@@ -75,6 +75,28 @@ public class COMPARER : MonoBehaviour
         }
     }
 
+    private class NUM_NODE
+    {
+        int n;
+        public NUM_NODE(int number)
+        {
+            n = number;
+        }
+    }
+    private class BYNARY_OP
+    {
+        public string op;
+        public ArrayList terms = new ArrayList();
+
+    }
+    private class VALUE_NODE {
+        string v;
+        public VALUE_NODE(string value) {
+            v = value;
+        }
+
+    }
+
     private void Start()
     {
         systemVariables = new List<string>();        
@@ -182,36 +204,70 @@ public class COMPARER : MonoBehaviour
         return formatedCode + " /end";
             //.Trim((char)8203);
     }
-    public List<string> Addterms(List<string> exp)
+    public ArrayList NodeTerms(List<string> exp)
     {
-        List<string> newExp = new List<string>();
+        ArrayList NodeList = new ArrayList();
+        foreach (string term in exp)
+        {
+            if (term.Contains("INT") && !term.Contains("VALUE")) NodeList.Add(new NUM_NODE(int.Parse(term)));
+            
+            else if (term.Contains("VALUE")) NodeList.Add(new VALUE_NODE(term));
+            
+            else NodeList.Add(term);
+        }
+
+        return NodeList;
+    }
+    public ArrayList Addterms(ArrayList exp)
+    {
+        ArrayList newExp = new ArrayList();
         for (int i = 0; i < exp.Count; i++)
         {
-            string n = exp[i];
-            if (n == "ADD_OP")
+            var n = exp[i];
+            if (n.ToString() == "ADD_OP")
             {
                 if (newExp.Count > 0 && i < exp.Count - 1)
                 {
-                    newExp[newExp.Count - 1] = $"ADD:{newExp[newExp.Count - 1]},{exp[i + 1]}";
+                    BYNARY_OP op = new BYNARY_OP();
+                    op.op = "ADD";
+                    op.terms.Add(newExp[newExp.Count - 1]);
+                    op.terms.Add(exp[i + 1]);
+
+                    newExp[newExp.Count - 1] = op;
                     i++;
                     continue;
                 }
                 else
                 {
-                    newExp[newExp.Count - 1] = $"ADD:null,null";
+                    BYNARY_OP op = new BYNARY_OP();
+                    op.op = "ADD";
+                    op.terms.Add("null");
+                    op.terms.Add("null");
+
+                    newExp[newExp.Count - 1] = op;
                 }
             }
-            else if (n == "SUB_OP")
+            else if (n.ToString() == "SUB_OP")
             {
                 if (newExp.Count > 0 && i < exp.Count - 1)
                 {
-                    newExp[newExp.Count - 1] = $"SUB:{newExp[newExp.Count - 1]},{exp[i + 1]}";
+                    BYNARY_OP op = new BYNARY_OP();
+                    op.op = "SUB";
+                    op.terms.Add(newExp[newExp.Count - 1]);
+                    op.terms.Add(exp[i + 1]);
+
+                    newExp[newExp.Count - 1] = op;
                     i++;
                     continue;
                 }
                 else
                 {
-                    newExp[newExp.Count - 1] = $"SUB:null,null";
+                    BYNARY_OP op = new BYNARY_OP();
+                    op.op = "SUB";
+                    op.terms.Add("null");
+                    op.terms.Add("null");
+
+                    newExp[newExp.Count - 1] = op;
                 }
             }
             else
@@ -221,41 +277,63 @@ public class COMPARER : MonoBehaviour
         }
         return newExp;
     }
-    public List<string> MutTerms(List<string> exp)
+    public ArrayList MutTerms(List<string> exp)
     {
-        List<string> newExp = new List<string>();
+        ArrayList newExp = new ArrayList();
+
         for (int i = 0; i < exp.Count; i ++)
         {
-            string n = exp[i];
-            if (n == "MUL_OP")
+            var n = exp[i];
+            if (n.ToString() == "MUL_OP")
             {
                 if (newExp.Count > 0 && i < exp.Count - 1)
                 {
-                    newExp[newExp.Count - 1] = $"MUL:{newExp[newExp.Count - 1]},{exp[i + 1]}";
+                    BYNARY_OP op = new BYNARY_OP();
+                    op.op = "MUL";
+                    op.terms.Add(newExp[newExp.Count - 1]);
+                    op.terms.Add(exp[i + 1]);
+
+                    newExp[newExp.Count - 1] = op;
                     i++;
                     continue;
                 }
                 else
                 {
-                    newExp[newExp.Count - 1] = $"MUL:null,null";
+                    BYNARY_OP op = new BYNARY_OP();
+                    op.op = "MUL";
+                    op.terms.Add("null");
+                    op.terms.Add("null");
+
+                    newExp[newExp.Count - 1] = op;
                 }
             }
-            else if (n == "DIV_OP")
+            else if (n.ToString() == "DIV_OP")
             {
                 if (newExp.Count > 0 && i < exp.Count - 1)
                 {
-                    newExp[newExp.Count - 1] = $"DIV:{newExp[newExp.Count - 1]},{exp[i + 1]}";
+                    BYNARY_OP op = new BYNARY_OP();
+                    op.op = "DIV";
+                    op.terms.Add(newExp[newExp.Count - 1]);
+                    op.terms.Add(exp[i + 1]);
+
+                    newExp[newExp.Count - 1] = op;
                     i++;
                     continue;
                 }
                 else
                 {
-                    newExp[newExp.Count - 1] = $"DIV:null,null";
+                    BYNARY_OP op = new BYNARY_OP();
+                    op.op = "DIV";
+                    op.terms.Add("null");
+                    op.terms.Add("null");
+
+                    newExp[newExp.Count - 1] = op;
                 }
             }
             else
             {
                 newExp.Add(n);
+
             }
         }
 
@@ -263,7 +341,7 @@ public class COMPARER : MonoBehaviour
     }
     public string createNumberExp(List<string> exp)
     {
-        string express = "";
+        string express = "MATH-EXP->";
         foreach (string op in Addterms(MutTerms(exp)))
         {
             express += op;
@@ -342,8 +420,7 @@ public class COMPARER : MonoBehaviour
                 tokenizedCode += "BOOL:" + fragment;
             }
             else if (int.TryParse(fragment, out int n))
-            {
-                
+            {                
                 tokenizedCode += "INT:" + fragment;                
             }
             else if (specialChars.Contains(fragment))
@@ -451,10 +528,21 @@ public class COMPARER : MonoBehaviour
 
                                     }
                                     tokenStack[i] = createNumberExp(expression);
+                                    token = tokenStack[i];
                                     Debug.Log(tokenStack[i]);
                                 }
+                                if (token.Contains("MATH-EXP->"))
+                                {
+                                    string exp = token.Split("->")[1];
 
-                                if (!token.Contains("VALUE"))
+                                    string[] expSteps = exp.Split(':');
+
+                                    for (int n = 0; n < expSteps.Length; n++)
+                                    {
+
+                                    }
+                                }
+                                else if (!token.Contains("VALUE"))
                                 {                                    
                                     if (token.Contains("INT") || token.Contains("BOOL") || token.Contains("STR"))
                                     {                                        
@@ -468,14 +556,7 @@ public class COMPARER : MonoBehaviour
                                     }
                                 }
                                 else
-                                {
-                                    if (i < tokenStack.Length - 1)
-                                    {
-                                        if (operators.Contains(tokenStack[i + 1]))
-                                        {
-
-                                        }
-                                    }
+                                {                                   
                                     bool foundVar = false;
                                     string varHold = "";
                                     string varCheker = token.Split("->")[1];

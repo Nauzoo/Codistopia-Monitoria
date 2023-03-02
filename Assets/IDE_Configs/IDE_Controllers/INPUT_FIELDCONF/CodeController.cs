@@ -46,23 +46,34 @@ public class CodeController : MonoBehaviour
     }
     private void indeXate(string codeLines)
     {
-        string[] codeTxt = codeBackup.text.Split(" ");
+        string[] codeTxt = codeBackup.text.Split("\n");
+
+        List<string> splitedCode = new List<string>();
+        foreach (string line in codeTxt)
+        {
+            foreach (string word in line.Split(" "))
+            {
+                splitedCode.Add(word);
+            }
+            splitedCode.Add("slashN");
+        }
 
         string formatedCode = "";
 
-        foreach (string term in codeTxt)
+        foreach (string term in splitedCode)
         {
 
-            if (term.Contains("if"))
+            if (term == "if")
             {
                 formatedCode += $" <color=blue>{term}</color> ";
             }
-            else if (term.Contains("var"))
+            else if (term == "var")
             {
                 formatedCode += $" <color=red> {term} </color> ";
-            }
-            else if (term.Contains("<color=") || term.Contains("</color>")) {
-                continue;
+            }            
+            else if (term == "slashN")
+            {
+                formatedCode += "\n";
             }
             else
             {
@@ -89,8 +100,7 @@ public class CodeController : MonoBehaviour
 
         originalCodeSize = new Vector2(codeArea.rect.width - codeArea.rect.width, codeArea.rect.height);
         originalBarSize = new Vector2(barTransform.rect.width, barTransform.rect.height);
-
-
+       
         UpdateLines();
     }
     private void Update()
