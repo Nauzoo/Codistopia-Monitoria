@@ -74,24 +74,36 @@ public class COMPARER : MonoBehaviour
             Debug.LogError("!Undefined Value: " + exp + " Linha: " + pos[0] + ", Termo: " + pos[1]);
         }
     }
-
-    private class NUM_NODE
+    public class NODE {
+        public string name { get; private set; }
+        public int n { get; protected set; }
+        public string op { get; set; }
+        public List<NODE> terms = new List<NODE>();
+        public string v { get; protected set; }
+        public NODE(string nam)
+        {
+            name = nam;
+        }
+    }
+    public class GENERIC_NODE : NODE {
+        public GENERIC_NODE(string nam) : base(nam) { }
+        
+    }
+    public class NUM_NODE : NODE
     {
-        int n;
-        public NUM_NODE(int number)
+        public NUM_NODE(int number) : base("NUM_NODE")
         {
             n = number;
         }
     }
-    private class BYNARY_OP
+    public class BYNARY_OP : NODE
     {
-        public string op;
-        public ArrayList terms = new ArrayList();
-
+        public BYNARY_OP() : base("BYNARY_OP") { }    
     }
-    private class VALUE_NODE {
-        string v;
-        public VALUE_NODE(string value) {
+
+    
+    public class VALUE_NODE : NODE{        
+        public VALUE_NODE(string value): base("VALUE_NODE") {
             v = value;
         }
 
@@ -204,23 +216,23 @@ public class COMPARER : MonoBehaviour
         return formatedCode + " /end";
             //.Trim((char)8203);
     }
-    public ArrayList NodeTerms(List<string> exp)
+    public List<NODE> NodeTerms(List<string> exp)
     {
-        ArrayList NodeList = new ArrayList();
+        List<NODE> NodeList = new List<NODE>();
         foreach (string term in exp)
         {
             if (term.Contains("INT") && !term.Contains("VALUE")) NodeList.Add(new NUM_NODE(int.Parse(term)));
-            
+
             else if (term.Contains("VALUE")) NodeList.Add(new VALUE_NODE(term));
-            
-            else NodeList.Add(term);
+
+            else NodeList.Add(new GENERIC_NODE(term));
         }
 
         return NodeList;
     }
-    public ArrayList Addterms(ArrayList exp)
+    public List<BYNARY_OP> Addterms(List<NODE> exp)
     {
-        ArrayList newExp = new ArrayList();
+        List<BYNARY_OP> newExp = new List<BYNARY_OP>();
         for (int i = 0; i < exp.Count; i++)
         {
             var n = exp[i];
@@ -241,8 +253,8 @@ public class COMPARER : MonoBehaviour
                 {
                     BYNARY_OP op = new BYNARY_OP();
                     op.op = "ADD";
-                    op.terms.Add("null");
-                    op.terms.Add("null");
+                    op.terms.Add(new GENERIC_NODE("null"));
+                    op.terms.Add(new GENERIC_NODE("null"));                    
 
                     newExp[newExp.Count - 1] = op;
                 }
@@ -264,22 +276,25 @@ public class COMPARER : MonoBehaviour
                 {
                     BYNARY_OP op = new BYNARY_OP();
                     op.op = "SUB";
-                    op.terms.Add("null");
-                    op.terms.Add("null");
+                    op.terms.Add(new GENERIC_NODE("null"));
+                    op.terms.Add(new GENERIC_NODE("null"));
 
                     newExp[newExp.Count - 1] = op;
                 }
             }
             else
             {
-                newExp.Add(n);
+                BYNARY_OP h = new BYNARY_OP();
+                h.op = n.ToString();
+
+                newExp.Add(h);
             }
         }
         return newExp;
     }
-    public ArrayList MutTerms(List<string> exp)
+    public List<NODE> MutTerms(List<NODE> exp)
     {
-        ArrayList newExp = new ArrayList();
+        List<NODE> newExp = new List<NODE>();
 
         for (int i = 0; i < exp.Count; i ++)
         {
@@ -301,8 +316,8 @@ public class COMPARER : MonoBehaviour
                 {
                     BYNARY_OP op = new BYNARY_OP();
                     op.op = "MUL";
-                    op.terms.Add("null");
-                    op.terms.Add("null");
+                    op.terms.Add(new GENERIC_NODE("null"));
+                    op.terms.Add(new GENERIC_NODE("null"));
 
                     newExp[newExp.Count - 1] = op;
                 }
@@ -324,29 +339,68 @@ public class COMPARER : MonoBehaviour
                 {
                     BYNARY_OP op = new BYNARY_OP();
                     op.op = "DIV";
-                    op.terms.Add("null");
-                    op.terms.Add("null");
+                    op.terms.Add(new GENERIC_NODE("null"));
+                    op.terms.Add(new GENERIC_NODE("null"));
 
                     newExp[newExp.Count - 1] = op;
                 }
             }
             else
-            {
+            {                
                 newExp.Add(n);
-
             }
         }
 
         return newExp;
     }
-    public string createNumberExp(List<string> exp)
+    public List<BYNARY_OP> createNumberExp(List<string> exp)
     {
-        string express = "MATH-EXP->";
-        foreach (string op in Addterms(MutTerms(exp)))
-        {
-            express += op;
-        }
+        List<BYNARY_OP> express = Addterms(MutTerms(NodeTerms(exp)));
+        
         return express;
+    }
+
+    public void SolveExp(List<BYNARY_OP> exp) // add return to string latter
+    {
+        if (exp.Count > 1)
+        {
+            // throw error
+        }
+        else
+        {
+            BYNARY_OP e = exp[0];
+            if (e.op == "ADD")
+            {
+                if (e.terms[0].name == "NUM_NODE")
+                {
+
+                }
+                else
+                {
+                    bool foundVar = false;
+                    string varHold = "";
+                    NODE varCheker = e.terms[0];
+                    foreach (string variable in systemVariables)
+                    {
+                        if (variable.Contains(varCheker.v))
+                        {
+                            foundVar = true;
+                            varHold = variable;
+                            break;
+                        }
+                    }
+                    if (foundVar)
+                    {
+                       
+                    }
+                    else
+                    {
+                        ERROR.undefinedValue(POSITION.GetPosition(), $"o valor {varCheker} nao foi atribuido as variaveis do sistema, declare-a.");                        
+                    }
+                }
+            }
+
+        }
     }
     public string tokenizeCode(string code)
     {
@@ -527,21 +581,12 @@ public class COMPARER : MonoBehaviour
                                         }
 
                                     }
-                                    tokenStack[i] = createNumberExp(expression);
+                                    List<BYNARY_OP> nodes = createNumberExp(expression);
+                                    //tokenStack[i] = SolveExp(nodes);
+
                                     token = tokenStack[i];
                                     Debug.Log(tokenStack[i]);
-                                }
-                                if (token.Contains("MATH-EXP->"))
-                                {
-                                    string exp = token.Split("->")[1];
-
-                                    string[] expSteps = exp.Split(':');
-
-                                    for (int n = 0; n < expSteps.Length; n++)
-                                    {
-
-                                    }
-                                }
+                                }                                
                                 else if (!token.Contains("VALUE"))
                                 {                                    
                                     if (token.Contains("INT") || token.Contains("BOOL") || token.Contains("STR"))
