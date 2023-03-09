@@ -6,7 +6,7 @@ public class SaveLastScene : MonoBehaviour
 {
     public void SaveScene()
     {
-        LastScene.lastPassedScene = SceneManager.GetActiveScene().buildIndex;
+        LastScene.lastPassedScene = UnityEngine.SceneManagement.SceneManager.GetActiveScene().buildIndex;
         LastScene.lastPlayerPos = Player_movement.GetInstance().transform.position;
         LastScene.lastVickPos = VickFollower.GetInstance().transform.position;
 

@@ -292,6 +292,53 @@ SpriteAtlas:
   - {fileID: -1768637920, guid: 5155c9b5de777894e95b183606e01926, type: 3}
   - {fileID: -1192732685, guid: 5155c9b5de777894e95b183606e01926, type: 3}
   - {fileID: -1987834239, guid: 5155c9b5de777894e95b183606e01926, type: 3}
+  - {fileID: 813502048, guid: 1d62a658659294c41a416ace73766a2a, type: 3}
+  - {fileID: 920815200, guid: 1d62a658659294c41a416ace73766a2a, type: 3}
+  - {fileID: -951877517, guid: 1d62a658659294c41a416ace73766a2a, type: 3}
+  - {fileID: 2078279361, guid: 1d62a658659294c41a416ace73766a2a, type: 3}
+  - {fileID: 1217251581, guid: 1d62a658659294c41a416ace73766a2a, type: 3}
+  - {fileID: 575022728, guid: 1d62a658659294c41a416ace73766a2a, type: 3}
+  - {fileID: 398205163, guid: 1d62a658659294c41a416ace73766a2a, type: 3}
+  - {fileID: 318064047, guid: 1d62a658659294c41a416ace73766a2a, type: 3}
+  - {fileID: 1451945632, guid: 1d62a658659294c41a416ace73766a2a, type: 3}
+  - {fileID: 1528892433, guid: 1d62a658659294c41a416ace73766a2a, type: 3}
+  - {fileID: 1731429407, guid: 1d62a658659294c41a416ace73766a2a, type: 3}
+  - {fileID: -356819155, guid: 1d62a658659294c41a416ace73766a2a, type: 3}
+  - {fileID: 1460566790, guid: 1d62a658659294c41a416ace73766a2a, type: 3}
+  - {fileID: -1449030858, guid: 1d62a658659294c41a416ace73766a2a, type: 3}
+  - {fileID: 1665893491, guid: 1d62a658659294c41a416ace73766a2a, type: 3}
+  - {fileID: 360491546, guid: 1d62a658659294c41a416ace73766a2a, type: 3}
+  - {fileID: 1203461264, guid: 1d62a658659294c41a416ace73766a2a, type: 3}
+  - {fileID: 1224569602, guid: 1d62a658659294c41a416ace73766a2a, type: 3}
+  - {fileID: -620862586, guid: 1d62a658659294c41a416ace73766a2a, type: 3}
+  - {fileID: 202851244, guid: 1d62a658659294c41a416ace73766a2a, type: 3}
+  - {fileID: 1886766533, guid: 1d62a658659294c41a416ace73766a2a, type: 3}
+  - {fileID: -1364474184, guid: 1d62a658659294c41a416ace73766a2a, type: 3}
+  - {fileID: -1708469888, guid: 1d62a658659294c41a416ace73766a2a, type: 3}
+  - {fileID: 1464155253, guid: 1d62a658659294c41a416ace73766a2a, type: 3}
+  - {fileID: 1242182430, guid: 1d62a658659294c41a416ace73766a2a, type: 3}
+  - {fileID: 1042136356, guid: 1d62a658659294c41a416ace73766a2a, type: 3}
+  - {fileID: -326993967, guid: 1d62a658659294c41a416ace73766a2a, type: 3}
+  - {fileID: -372587424, guid: 1d62a658659294c41a416ace73766a2a, type: 3}
+  - {fileID: 1606154610, guid: 1d62a658659294c41a416ace73766a2a, type: 3}
+  - {fileID: -1906342434, guid: 1d62a658659294c41a416ace73766a2a, type: 3}
+  - {fileID: -1435318203, guid: 1d62a658659294c41a416ace73766a2a, type: 3}
+  - {fileID: 1163097262, guid: 1d62a658659294c41a416ace73766a2a, type: 3}
+  - {fileID: -1656335463, guid: 1d62a658659294c41a416ace73766a2a, type: 3}
+  - {fileID: -2033713512, guid: 1d62a658659294c41a416ace73766a2a, type: 3}
+  - {fileID: 166927652, guid: 1d62a658659294c41a416ace73766a2a, type: 3}
+  - {fileID: 1981052049, guid: 1d62a658659294c41a416ace73766a2a, type: 3}
+  - {fileID: -1600138469, guid: 1d62a658659294c41a416ace73766a2a, type: 3}
+  - {fileID: 1665951283, guid: 1d62a658659294c41a416ace73766a2a, type: 3}
+  - {fileID: 1708245035, guid: 1d62a658659294c41a416ace73766a2a, type: 3}
+  - {fileID: 586448967, guid: 1d62a658659294c41a416ace73766a2a, type: 3}
+  - {fileID: 1228091957, guid: 1d62a658659294c41a416ace73766a2a, type: 3}
+  - {fileID: 183489147, guid: 1d62a658659294c41a416ace73766a2a, type: 3}
+  - {fileID: 1926541412, guid: 1d62a658659294c41a416ace73766a2a, type: 3}
+  - {fileID: -1343750710, guid: 1d62a658659294c41a416ace73766a2a, type: 3}
+  - {fileID: -1876701974, guid: 1d62a658659294c41a416ace73766a2a, type: 3}
+  - {fileID: 1883383161, guid: 1d62a658659294c41a416ace73766a2a, type: 3}
+  - {fileID: 1662296854, guid: 1d62a658659294c41a416ace73766a2a, type: 3}
   - {fileID: 1633923118, guid: e860cffbe2c22b4428c8b9009bbfdd86, type: 3}
   - {fileID: -482568643, guid: e860cffbe2c22b4428c8b9009bbfdd86, type: 3}
   - {fileID: 423967630, guid: e860cffbe2c22b4428c8b9009bbfdd86, type: 3}
@@ -937,6 +984,53 @@ SpriteAtlas:
   - House_1_28
   - House_1_11
   - House_1_29
+  - Cottage_3
+  - Cottage_2
+  - Cottage_1
+  - Cottage_0
+  - Cottage_7
+  - Cottage_6
+  - Cottage_5
+  - Cottage_4
+  - Cottage_9
+  - Cottage_8
+  - Cottage_16
+  - Cottage_17
+  - Cottage_14
+  - Cottage_15
+  - Cottage_12
+  - Cottage_13
+  - Cottage_10
+  - Cottage_11
+  - Cottage_18
+  - Cottage_19
+  - Cottage_30
+  - Cottage_31
+  - Cottage_32
+  - Cottage_33
+  - Cottage_23
+  - Cottage_34
+  - Cottage_22
+  - Cottage_35
+  - Cottage_21
+  - Cottage_45
+  - Cottage_36
+  - Cottage_20
+  - Cottage_44
+  - Cottage_37
+  - Cottage_27
+  - Cottage_38
+  - Cottage_26
+  - Cottage_46
+  - Cottage_39
+  - Cottage_25
+  - Cottage_41
+  - Cottage_24
+  - Cottage_40
+  - Cottage_43
+  - Cottage_42
+  - Cottage_29
+  - Cottage_28
   - FrogShop_108
   - FrogShop_158
   - FrogShop_159

@@ -112,6 +112,23 @@ SpriteAtlas:
   - {fileID: -640279543, guid: 24a95430aa13c954cacceb1653fa0fd0, type: 3}
   - {fileID: -280498119, guid: 24a95430aa13c954cacceb1653fa0fd0, type: 3}
   - {fileID: -1206785134, guid: 24a95430aa13c954cacceb1653fa0fd0, type: 3}
+  - {fileID: 33649178, guid: 58efd1353c56c544a9c5c6036ece71f8, type: 3}
+  - {fileID: -1897845676, guid: 58efd1353c56c544a9c5c6036ece71f8, type: 3}
+  - {fileID: 1018535728, guid: 58efd1353c56c544a9c5c6036ece71f8, type: 3}
+  - {fileID: -1065703673, guid: 58efd1353c56c544a9c5c6036ece71f8, type: 3}
+  - {fileID: -2147018227, guid: 58efd1353c56c544a9c5c6036ece71f8, type: 3}
+  - {fileID: 1452219741, guid: 58efd1353c56c544a9c5c6036ece71f8, type: 3}
+  - {fileID: -1007528116, guid: 58efd1353c56c544a9c5c6036ece71f8, type: 3}
+  - {fileID: -538952405, guid: 58efd1353c56c544a9c5c6036ece71f8, type: 3}
+  - {fileID: -1502218425, guid: 58efd1353c56c544a9c5c6036ece71f8, type: 3}
+  - {fileID: 614478788, guid: 58efd1353c56c544a9c5c6036ece71f8, type: 3}
+  - {fileID: -1802669740, guid: 58efd1353c56c544a9c5c6036ece71f8, type: 3}
+  - {fileID: 507082522, guid: 58efd1353c56c544a9c5c6036ece71f8, type: 3}
+  - {fileID: 1696019939, guid: 58efd1353c56c544a9c5c6036ece71f8, type: 3}
+  - {fileID: -81876806, guid: 58efd1353c56c544a9c5c6036ece71f8, type: 3}
+  - {fileID: -1238782525, guid: 58efd1353c56c544a9c5c6036ece71f8, type: 3}
+  - {fileID: -665133863, guid: 58efd1353c56c544a9c5c6036ece71f8, type: 3}
+  - {fileID: 2005684068, guid: 58efd1353c56c544a9c5c6036ece71f8, type: 3}
   - {fileID: -957148993, guid: 1bdb0d9baead8db4080932cef1bec5b7, type: 3}
   - {fileID: -1310239981, guid: 1bdb0d9baead8db4080932cef1bec5b7, type: 3}
   - {fileID: 1240256929, guid: 1bdb0d9baead8db4080932cef1bec5b7, type: 3}
@@ -223,6 +240,23 @@ SpriteAtlas:
   - Street_15
   - Street_12
   - Street_13
+  - Glit_8
+  - Glit_9
+  - Glit_16
+  - Glit_15
+  - Glit_14
+  - Glit_13
+  - Glit_12
+  - Glit_11
+  - Glit_10
+  - Glit_4
+  - Glit_5
+  - Glit_6
+  - Glit_7
+  - Glit_0
+  - Glit_1
+  - Glit_2
+  - Glit_3
   - Tiles_Street_Bricks_8
   - Tiles_Street_Bricks_9
   - Tiles_Street_Bricks_0
