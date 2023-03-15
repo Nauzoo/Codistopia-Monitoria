@@ -1,0 +1,21 @@
+->VOICE:MALE
+MARCELO: *Ofegante* Ziul! Bom dia garoto!
+ZIUL: Marcelo?!
+ZIUL: Que que tu tá fazendo na minha casa tão cedo?
+MARCELO: Seu pai pediu que eu entregasse esse bilhete pra você.
+MARCELO: Vim correndo do escritório dele em Zistor City até aqui!
+MARCELO: Ele pediu para não dizer a ninguém o que estava trazendo...
+MARCELO: Aqui está o recado! ->Q:
+Puxar da mão dele. -ANS:12
+Obrigado! -ANS:12
+-goto ->8
+BILHETE: Ziul, nosso mundo corre perigo e só você pode ajudar.
+Vá ao galpão onde papai trabalhava e reinicie o projeto Vicky!
+Codistopia conta com você!
+SENHA: 1234
+MARCELO: O que diz o bilhete? ->Q:
+Coisas de computador, nada demais. -ANS:19
+Não interressa pra você, palhaço! -ANS:19
+MARCELO: Ok então...
+-goto -> 16
+-END
