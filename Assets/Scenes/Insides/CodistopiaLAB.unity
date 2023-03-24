@@ -7153,7 +7153,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: UI_CUTSCENE
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 964702598483661498, guid: 36aaf4413060aad4a9277676e65c6726, type: 3}
     m_AddedGameObjects: []
   m_SourcePrefab: {fileID: 100100000, guid: 36aaf4413060aad4a9277676e65c6726, type: 3}
 --- !u!1 &750636371
