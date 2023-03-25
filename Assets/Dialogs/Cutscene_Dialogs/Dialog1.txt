@@ -17,5 +17,4 @@ MARCELO: O que diz o bilhete? ->Q:
 Coisas de computador, nada demais. -ANS:19
 Não interressa pra você, palhaço! -ANS:19
 MARCELO: Ok então...
--goto -> 16
 -END
